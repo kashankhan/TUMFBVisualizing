@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 
-#import "MasterViewController.h"
-
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -25,78 +23,9 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     // Facebook SDK * login flow *
     // Attempt to handle URLs to complete any auth (e.g., SSO) flow.
-    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication fallbackHandler:^(FBAppCall *call) {
-        // Facebook SDK * App Linking *
-        // For simplicity, this sample will ignore the link if the session is already
-        // open but a more advanced app could support features like user switching.
-        if (call.accessTokenData) {
-            if ([FBSession activeSession].isOpen) {
-                NSLog(@"INFO: Ignoring app link because current session is open.");
-            }
-            else {
-                [self handleAppLink:call.accessTokenData];
-            }
-        }
-    }];
+    return [[FacebookManager sharedManager] openURL:url sourceApplication:sourceApplication];
 }
 
-// Helper method to wrap logic for handling app links.
-- (void)handleAppLink:(FBAccessTokenData *)appLinkToken {
-
-    // Initialize a new blank session instance...
-    FBSession *appLinkSession = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                                                     permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
-                                                 defaultAudience:FBSessionDefaultAudienceNone
-                                                 urlSchemeSuffix:nil
-                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance] ];
-    [FBSession setActiveSession:appLinkSession];
-    // ... and open it from the App Link's Token.
-    [appLinkSession openFromAccessTokenData:appLinkToken
-                          completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                              // Forward any errors to the FBLoginView delegate.
-                              if (error) {
-                                  NSString *alertMessage, *alertTitle;
-                                  
-                                  // Facebook SDK * error handling *
-                                  // Error handling is an important part of providing a good user experience.
-                                  // Since this sample uses the FBLoginView, this delegate will respond to
-                                  // login failures, or other failures that have closed the session (such
-                                  // as a token becoming invalid). Please see the [- postOpenGraphAction:]
-                                  // and [- requestPermissionAndPost] on `SCViewController` for further
-                                  // error handling on other operations.
-                                  
-                                  if (error.fberrorShouldNotifyUser) {
-                                      // If the SDK has a message for the user, surface it. This conveniently
-                                      // handles cases like password change or iOS6 app slider state.
-                                      alertTitle = @"Something Went Wrong";
-                                      alertMessage = error.fberrorUserMessage;
-                                  } else if (error.fberrorCategory == FBErrorCategoryAuthenticationReopenSession) {
-                                      // It is important to handle session closures as mentioned. You can inspect
-                                      // the error for more context but this sample generically notifies the user.
-                                      alertTitle = @"Session Error";
-                                      alertMessage = @"Your current session is no longer valid. Please log in again.";
-                                  } else if (error.fberrorCategory == FBErrorCategoryUserCancelled) {
-                                      // The user has cancelled a login. You can inspect the error
-                                      // for more context. For this sample, we will simply ignore it.
-                                      NSLog(@"user cancelled login");
-                                  } else {
-                                      // For simplicity, this sample treats other errors blindly, but you should
-                                      // refer to https://developers.facebook.com/docs/technical-guides/iossdk/errors/ for more information.
-                                      alertTitle  = @"Unknown Error";
-                                      alertMessage = @"Error. Please try again later.";
-                                      NSLog(@"Unexpected error:%@", error);
-                                  }
-                                  
-                                  if (alertMessage) {
-                                      [[[UIAlertView alloc] initWithTitle:alertTitle
-                                                                  message:alertMessage
-                                                                 delegate:nil
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles:nil] show];
-                                  }
-                              }
-                          }];
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

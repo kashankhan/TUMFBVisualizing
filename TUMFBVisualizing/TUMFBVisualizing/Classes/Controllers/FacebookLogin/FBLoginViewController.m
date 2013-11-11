@@ -30,36 +30,20 @@
 
 }
 
+- (void)setUpSubViews {
+    [self.view setBackgroundColor:[[UIColor darkGrayColor] colorWithAlphaComponent:0.5]];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setShouldSkipLogIn:(BOOL)skip {
-    [[NSUserDefaults standardUserDefaults] setBool:skip forKey:@"ScrumptiousSkipLogIn"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (BOOL)shouldSkipLogIn {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"ScrumptiousSkipLogIn"];
-}
-- (void)transitionToMainViewController {
-    // this pop is a noop in some cases, and in others makes sure we don't try
-    // to push the same controller twice
-//    [self.navigationController popToRootViewControllerAnimated:NO];
-//    
-//    // Upon login, transition to the main UI by pushing it onto the navigation stack.
-//    SCAppDelegate *appDelegate = (SCAppDelegate *)[UIApplication sharedApplication].delegate;
-//    [self.navigationController pushViewController:appDelegate.mainViewController animated:YES];
-}
 #pragma mark - FBLoginView delegate
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     // if you become logged in, no longer flag to skip log in
-    self.shouldSkipLogIn = NO;
-    [self transitionToMainViewController];
-    
     
 //    [FBSession.activeSession requestNewReadPermissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
 //                                     completionHandler:^(FBSession *session,
@@ -67,7 +51,7 @@
 //    {
         // Handle new permissions callback
         //[self fecthFreinds:0];
-        [self test];
+       // [self test];
 
 //    }];
     

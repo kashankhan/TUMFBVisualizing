@@ -14,11 +14,8 @@
 		C06AB9B61825C0190032E2AA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B51825C0190032E2AA /* CoreData.framework */; };
 		C06AB9BC1825C01A0032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9BA1825C01A0032E2AA /* InfoPlist.strings */; };
 		C06AB9BE1825C01A0032E2AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9BD1825C01A0032E2AA /* main.m */; };
-		C06AB9C21825C01A0032E2AA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9C11825C01A0032E2AA /* AppDelegate.m */; };
 		C06AB9C51825C01A0032E2AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9C31825C01A0032E2AA /* Main.storyboard */; };
 		C06AB9C81825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9C61825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld */; };
-		C06AB9CB1825C01A0032E2AA /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9CA1825C01A0032E2AA /* MasterViewController.m */; };
-		C06AB9CE1825C01A0032E2AA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9CD1825C01A0032E2AA /* DetailViewController.m */; };
 		C06AB9D01825C01A0032E2AA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9CF1825C01A0032E2AA /* Images.xcassets */; };
 		C06AB9D71825C01A0032E2AA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9D61825C01A0032E2AA /* XCTest.framework */; };
 		C06AB9D81825C01A0032E2AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9AF1825C0190032E2AA /* Foundation.framework */; };
@@ -26,7 +23,14 @@
 		C06AB9DA1825C01A0032E2AA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B51825C0190032E2AA /* CoreData.framework */; };
 		C06AB9E21825C01A0032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9E01825C01A0032E2AA /* InfoPlist.strings */; };
 		C06AB9E41825C01A0032E2AA /* TUMFBVisualizingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */; };
-		C06AB9EF1825C2E70032E2AA /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9EE1825C2E70032E2AA /* FBLoginViewController.m */; };
+		C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D64AF218315EFE008D460F /* MapKit.framework */; };
+		C0D64AF71831652E008D460F /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AF61831652E008D460F /* FacebookManager.m */; };
+		C0D64AFB183177CF008D460F /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AFA183177CF008D460F /* FBLoginViewController.m */; };
+		C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D2F18315C0B0087AF4B /* AppDelegate.m */; };
+		C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3718315C370087AF4B /* BaseViewViewController.m */; };
+		C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */; };
+		C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3F18315D730087AF4B /* MBProgressHUD.m */; };
+		C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E55D4118315EC30087AF4B /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,22 +54,28 @@
 		C06AB9BB1825C01A0032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C06AB9BD1825C01A0032E2AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C06AB9BF1825C01A0032E2AA /* TUMFBVisualizing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUMFBVisualizing-Prefix.pch"; sourceTree = "<group>"; };
-		C06AB9C01825C01A0032E2AA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C06AB9C11825C01A0032E2AA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C06AB9C41825C01A0032E2AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C06AB9C71825C01A0032E2AA /* TUMFBVisualizing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TUMFBVisualizing.xcdatamodel; sourceTree = "<group>"; };
-		C06AB9C91825C01A0032E2AA /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		C06AB9CA1825C01A0032E2AA /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		C06AB9CC1825C01A0032E2AA /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		C06AB9CD1825C01A0032E2AA /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		C06AB9CF1825C01A0032E2AA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C06AB9D51825C01A0032E2AA /* TUMFBVisualizingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TUMFBVisualizingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06AB9D61825C01A0032E2AA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C06AB9DF1825C01A0032E2AA /* TUMFBVisualizingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TUMFBVisualizingTests-Info.plist"; sourceTree = "<group>"; };
 		C06AB9E11825C01A0032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TUMFBVisualizingTests.m; sourceTree = "<group>"; };
-		C06AB9ED1825C2E70032E2AA /* FBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginViewController.h; sourceTree = "<group>"; };
-		C06AB9EE1825C2E70032E2AA /* FBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginViewController.m; sourceTree = "<group>"; };
+		C0D64AF218315EFE008D460F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C0D64AF51831652E008D460F /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
+		C0D64AF61831652E008D460F /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
+		C0D64AF9183177CF008D460F /* FBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginViewController.h; sourceTree = "<group>"; };
+		C0D64AFA183177CF008D460F /* FBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginViewController.m; sourceTree = "<group>"; };
+		C0E55D2E18315C0B0087AF4B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C0E55D2F18315C0B0087AF4B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C0E55D3618315C370087AF4B /* BaseViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewViewController.h; sourceTree = "<group>"; };
+		C0E55D3718315C370087AF4B /* BaseViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewViewController.m; sourceTree = "<group>"; };
+		C0E55D3918315D290087AF4B /* FriendsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsMapViewController.h; sourceTree = "<group>"; };
+		C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsMapViewController.m; sourceTree = "<group>"; };
+		C0E55D3E18315D730087AF4B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		C0E55D3F18315D730087AF4B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C0E55D4118315EC30087AF4B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */,
+				C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */,
 				C06AB9B21825C0190032E2AA /* CoreGraphics.framework in Frameworks */,
 				C001ABBB182680380027434C /* FacebookSDK.framework in Frameworks */,
 				C06AB9B61825C0190032E2AA /* CoreData.framework in Frameworks */,
@@ -117,6 +129,8 @@
 		C06AB9AE1825C0190032E2AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0D64AF218315EFE008D460F /* MapKit.framework */,
+				C0E55D4118315EC30087AF4B /* CoreLocation.framework */,
 				C001ABBA182680380027434C /* FacebookSDK.framework */,
 				C06AB9AF1825C0190032E2AA /* Foundation.framework */,
 				C06AB9B11825C0190032E2AA /* CoreGraphics.framework */,
@@ -130,15 +144,8 @@
 		C06AB9B71825C0190032E2AA /* TUMFBVisualizing */ = {
 			isa = PBXGroup;
 			children = (
-				C06AB9C01825C01A0032E2AA /* AppDelegate.h */,
-				C06AB9C11825C01A0032E2AA /* AppDelegate.m */,
+				C0E55D2C18315C0B0087AF4B /* Classes */,
 				C06AB9C31825C01A0032E2AA /* Main.storyboard */,
-				C06AB9ED1825C2E70032E2AA /* FBLoginViewController.h */,
-				C06AB9EE1825C2E70032E2AA /* FBLoginViewController.m */,
-				C06AB9C91825C01A0032E2AA /* MasterViewController.h */,
-				C06AB9CA1825C01A0032E2AA /* MasterViewController.m */,
-				C06AB9CC1825C01A0032E2AA /* DetailViewController.h */,
-				C06AB9CD1825C01A0032E2AA /* DetailViewController.m */,
 				C06AB9CF1825C01A0032E2AA /* Images.xcassets */,
 				C06AB9C61825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld */,
 				C06AB9B81825C0190032E2AA /* Supporting Files */,
@@ -173,6 +180,81 @@
 				C06AB9E01825C01A0032E2AA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0D64AF418316502008D460F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C0D64AF51831652E008D460F /* FacebookManager.h */,
+				C0D64AF61831652E008D460F /* FacebookManager.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C0D64AF8183177CF008D460F /* FacebookLogin */ = {
+			isa = PBXGroup;
+			children = (
+				C0D64AF9183177CF008D460F /* FBLoginViewController.h */,
+				C0D64AFA183177CF008D460F /* FBLoginViewController.m */,
+			);
+			path = FacebookLogin;
+			sourceTree = "<group>";
+		};
+		C0E55D2C18315C0B0087AF4B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C0E55D2D18315C0B0087AF4B /* AppDelegate */,
+				C0E55D3018315C0B0087AF4B /* Controllers */,
+				C0D64AF418316502008D460F /* Utilities */,
+				C0E55D3C18315D730087AF4B /* ThirdPartyFrameWorks */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C0E55D2D18315C0B0087AF4B /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C0E55D2E18315C0B0087AF4B /* AppDelegate.h */,
+				C0E55D2F18315C0B0087AF4B /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C0E55D3018315C0B0087AF4B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0E55D3618315C370087AF4B /* BaseViewViewController.h */,
+				C0E55D3718315C370087AF4B /* BaseViewViewController.m */,
+				C0D64AF8183177CF008D460F /* FacebookLogin */,
+				C0E55D3318315C0B0087AF4B /* FriendsMap */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C0E55D3318315C0B0087AF4B /* FriendsMap */ = {
+			isa = PBXGroup;
+			children = (
+				C0E55D3918315D290087AF4B /* FriendsMapViewController.h */,
+				C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */,
+			);
+			path = FriendsMap;
+			sourceTree = "<group>";
+		};
+		C0E55D3C18315D730087AF4B /* ThirdPartyFrameWorks */ = {
+			isa = PBXGroup;
+			children = (
+				C0E55D3D18315D730087AF4B /* ProgressHud */,
+			);
+			path = ThirdPartyFrameWorks;
+			sourceTree = "<group>";
+		};
+		C0E55D3D18315D730087AF4B /* ProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				C0E55D3E18315D730087AF4B /* MBProgressHUD.h */,
+				C0E55D3F18315D730087AF4B /* MBProgressHUD.m */,
+			);
+			path = ProgressHud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,12 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C06AB9EF1825C2E70032E2AA /* FBLoginViewController.m in Sources */,
-				C06AB9CE1825C01A0032E2AA /* DetailViewController.m in Sources */,
-				C06AB9CB1825C01A0032E2AA /* MasterViewController.m in Sources */,
-				C06AB9C21825C01A0032E2AA /* AppDelegate.m in Sources */,
+				C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */,
+				C0D64AF71831652E008D460F /* FacebookManager.m in Sources */,
+				C0D64AFB183177CF008D460F /* FBLoginViewController.m in Sources */,
 				C06AB9BE1825C01A0032E2AA /* main.m in Sources */,
 				C06AB9C81825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld in Sources */,
+				C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */,
+				C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */,
+				C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
