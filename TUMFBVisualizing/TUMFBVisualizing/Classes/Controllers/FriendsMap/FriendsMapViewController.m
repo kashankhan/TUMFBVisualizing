@@ -7,7 +7,7 @@
 //
 
 #import "FriendsMapViewController.h"
-
+#import "PaserHandler.h"
 
 @interface FriendsMapViewController ()
 
@@ -74,8 +74,17 @@
     [self setNavigationItems];
     if (userLogin) {
         [[FacebookManager sharedManager] fecthFreindsLocationWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-            NSLog(@"friend : %@", result);
+            PaserHandler *parserHandler = [[PaserHandler alloc] init];
+            NSArray *friends = [parserHandler parseFriends:result];
+            [self markFriendsOnMap:friends];
         }];
     }
+}
+
+
+- (void)markFriendsOnMap:(NSArray *)friends {
+
+
+
 }
 @end

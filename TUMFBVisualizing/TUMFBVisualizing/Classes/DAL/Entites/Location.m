@@ -18,6 +18,7 @@
 @dynamic longitude;
 @dynamic name;
 @dynamic zip;
+@dynamic state;
 @dynamic frientInfo;
 
 @end

@@ -16,9 +16,18 @@
 @property (nonatomic, retain) NSString * country;
 @property (nonatomic, retain) NSString * locationId;
 @property (nonatomic, retain) NSNumber * latitude;
-@property (nonatomic, retain) NSString * longitude;
+@property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * zip;
-@property (nonatomic, retain) NSManagedObject *frientInfo;
+@property (nonatomic, retain) NSString * state;
+@property (nonatomic, retain) NSSet *frientInfo;
+@end
+
+@interface Location (CoreDataGeneratedAccessors)
+
+- (void)addFrientInfoObject:(NSManagedObject *)value;
+- (void)removeFrientInfoObject:(NSManagedObject *)value;
+- (void)addFrientInfo:(NSSet *)values;
+- (void)removeFrientInfo:(NSSet *)values;
 
 @end

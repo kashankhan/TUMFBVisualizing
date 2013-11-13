@@ -11,7 +11,7 @@
 		C0164B1E1833FC4600B957A7 /* CoreDataUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B1C1833FC4600B957A7 /* CoreDataUtility.m */; };
 		C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B201833FC6000B957A7 /* PaserHandler.m */; };
 		C0164B241833FCE600B957A7 /* AppDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B231833FCE600B957A7 /* AppDAL.m */; };
-		C02DD52118340344001BC861 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C02DD52018340344001BC861 /* Location.m */; };
+		C02DD52D18340A3D001BC861 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C02DD52C18340A3D001BC861 /* Location.m */; };
 		C06AB9B01825C0190032E2AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9AF1825C0190032E2AA /* Foundation.framework */; };
 		C06AB9B21825C0190032E2AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B11825C0190032E2AA /* CoreGraphics.framework */; };
 		C06AB9B41825C0190032E2AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B31825C0190032E2AA /* UIKit.framework */; };
@@ -56,8 +56,8 @@
 		C0164B201833FC6000B957A7 /* PaserHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaserHandler.m; sourceTree = "<group>"; };
 		C0164B221833FCE600B957A7 /* AppDAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDAL.h; sourceTree = "<group>"; };
 		C0164B231833FCE600B957A7 /* AppDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDAL.m; sourceTree = "<group>"; };
-		C02DD51F18340344001BC861 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		C02DD52018340344001BC861 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		C02DD52B18340A3D001BC861 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		C02DD52C18340A3D001BC861 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		C06AB9AC1825C0190032E2AA /* TUMFBVisualizing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMFBVisualizing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06AB9AF1825C0190032E2AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C06AB9B11825C0190032E2AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,8 +164,8 @@
 			children = (
 				C0AB9DD218340079003AAC87 /* Friend.h */,
 				C0AB9DD318340079003AAC87 /* Friend.m */,
-				C02DD51F18340344001BC861 /* Location.h */,
-				C02DD52018340344001BC861 /* Location.m */,
+				C02DD52B18340A3D001BC861 /* Location.h */,
+				C02DD52C18340A3D001BC861 /* Location.m */,
 			);
 			path = Entites;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */,
-				C02DD52118340344001BC861 /* Location.m in Sources */,
+				C02DD52D18340A3D001BC861 /* Location.m in Sources */,
 				C0D64AF71831652E008D460F /* FacebookManager.m in Sources */,
 				C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */,
 				C0AB9DD618340079003AAC87 /* Friend.m in Sources */,
