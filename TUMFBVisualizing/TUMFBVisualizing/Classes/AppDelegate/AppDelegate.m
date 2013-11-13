@@ -54,8 +54,7 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
     // FBSample logic
-    // if the app is going away, we close the session object
-    [FBSession.activeSession close];
+
 }
 
 - (void)saveContext

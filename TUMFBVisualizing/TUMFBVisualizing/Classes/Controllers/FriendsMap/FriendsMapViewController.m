@@ -8,6 +8,7 @@
 
 #import "FriendsMapViewController.h"
 
+
 @interface FriendsMapViewController ()
 
 @end
@@ -31,12 +32,50 @@
 
 
 - (void)setUpSubViews {
-
+    
+    [self subscribeNotificaitons];
+    [self setNavigationItems];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setNavigationItems {
+
+    NSString *btnTitle = [[FacebookManager sharedManager] isSessionActive] ? @"Logout" :  @"Login";
+    SEL selector = ([[FacebookManager sharedManager] isSessionActive]) ? NSSelectorFromString(@"performLogout:") : NSSelectorFromString(@"performLogin:");
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:btnTitle style:UIBarButtonItemStylePlain target:self action:selector];
+    [self.navigationItem setRightBarButtonItem:barItem];
+}
+
+- (void)subscribeNotificaitons {
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleFacebookSessionHandleNotification:) name:UIFacebookLUserSessionNotification object:nil];
+}
+- (void)performLogin:(id)sender {
+
+    [[FacebookManager sharedManager] perfromLogin];
+    
+}
+
+- (void)performLogout:(id)sender {
+    
+    [[FacebookManager sharedManager] logout];
+    [self setNavigationItems];
+    
+}
+
+- (void)handleFacebookSessionHandleNotification:(NSNotification *)notification {
+
+    BOOL userLogin = [[notification object] boolValue];
+    [self setNavigationItems];
+    if (userLogin) {
+        [[FacebookManager sharedManager] fecthFreindsLocationWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            NSLog(@"friend : %@", result);
+        }];
+    }
+}
 @end

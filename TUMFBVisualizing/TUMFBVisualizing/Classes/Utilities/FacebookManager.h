@@ -16,9 +16,15 @@ typedef void (^FacebookManagerRequestHandler)(FBRequestConnection *connection,
 @interface FacebookManager : NSObject
 
 + (FacebookManager*)sharedManager;
+- (BOOL)isSessionActive;
+- (void)closeActiveSession;
+- (void)perfromLogin;
+- (void)logout;
+- (void)handleAppLink:(FBAccessTokenData *)appLinkToken;
 - (BOOL)openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
 - (FBLoginView*)getFBLoginViewWithFrame:(CGRect)rect;
-- (void)fecthFreindsWithCompletionHandler:(FacebookManagerRequestHandler)handler;;
+- (void)fecthFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler;;
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler;
+
 
 @end

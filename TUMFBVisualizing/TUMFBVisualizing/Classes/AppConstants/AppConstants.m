@@ -11,4 +11,4 @@
 
 /***************** NOTIFICATIONS *****************/
 
-NSString* const UIFacebookLoginSuccessfullNotification = @"UIFacebookLoginSuccessfullNotification";
+NSString* const UIFacebookLUserSessionNotification = @"UIFacebookLUserSessionNotification";

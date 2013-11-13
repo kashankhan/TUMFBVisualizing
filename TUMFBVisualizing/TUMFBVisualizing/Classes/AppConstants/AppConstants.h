@@ -11,4 +11,4 @@
 
 /***************** NOTIFICATIONS *****************/
 
-extern NSString* const UIFacebookLoginSuccessfullNotification;
+extern NSString* const UIFacebookLUserSessionNotification;

@@ -25,7 +25,6 @@
 		C06AB9E41825C01A0032E2AA /* TUMFBVisualizingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */; };
 		C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D64AF218315EFE008D460F /* MapKit.framework */; };
 		C0D64AF71831652E008D460F /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AF61831652E008D460F /* FacebookManager.m */; };
-		C0D64AFB183177CF008D460F /* FBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AFA183177CF008D460F /* FBLoginViewController.m */; };
 		C0D64AFF18317848008D460F /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AFE18317848008D460F /* AppConstants.m */; };
 		C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D2F18315C0B0087AF4B /* AppDelegate.m */; };
 		C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3718315C370087AF4B /* BaseViewViewController.m */; };
@@ -66,8 +65,6 @@
 		C0D64AF218315EFE008D460F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0D64AF51831652E008D460F /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
 		C0D64AF61831652E008D460F /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
-		C0D64AF9183177CF008D460F /* FBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBLoginViewController.h; sourceTree = "<group>"; };
-		C0D64AFA183177CF008D460F /* FBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBLoginViewController.m; sourceTree = "<group>"; };
 		C0D64AFD18317848008D460F /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		C0D64AFE18317848008D460F /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
 		C0E55D2E18315C0B0087AF4B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -194,15 +191,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		C0D64AF8183177CF008D460F /* FacebookLogin */ = {
-			isa = PBXGroup;
-			children = (
-				C0D64AF9183177CF008D460F /* FBLoginViewController.h */,
-				C0D64AFA183177CF008D460F /* FBLoginViewController.m */,
-			);
-			path = FacebookLogin;
-			sourceTree = "<group>";
-		};
 		C0D64AFC18317830008D460F /* AppConstants */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,7 +226,6 @@
 			children = (
 				C0E55D3618315C370087AF4B /* BaseViewViewController.h */,
 				C0E55D3718315C370087AF4B /* BaseViewViewController.m */,
-				C0D64AF8183177CF008D460F /* FacebookLogin */,
 				C0E55D3318315C0B0087AF4B /* FriendsMap */,
 			);
 			path = Controllers;
@@ -369,7 +356,6 @@
 			files = (
 				C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */,
 				C0D64AF71831652E008D460F /* FacebookManager.m in Sources */,
-				C0D64AFB183177CF008D460F /* FBLoginViewController.m in Sources */,
 				C06AB9BE1825C01A0032E2AA /* main.m in Sources */,
 				C06AB9C81825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld in Sources */,
 				C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */,

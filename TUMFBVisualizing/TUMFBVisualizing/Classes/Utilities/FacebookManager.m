@@ -8,11 +8,17 @@
 
 #import "FacebookManager.h"
 
+@interface FacebookManager ()
+
+@property (nonatomic, strong) FBSession *session;
+@end
+
 @implementation FacebookManager
 
+static FacebookManager *_sharedInstance = nil;
 + (FacebookManager*)sharedManager {
     // 1
-    static FacebookManager *_sharedInstance = nil;
+
     
     // 2
     static dispatch_once_t oncePredicate;
@@ -25,18 +31,51 @@
     return _sharedInstance;
 }
 
+- (BOOL)isSessionActive {
+
+    return [[FBSession activeSession] isOpen];
+}
+
+- (void)closeActiveSession {
+
+    // if the app is going away, we close the session object
+    [FBSession.activeSession close];
+}
+
+- (void)perfromLogin {
+   
+    self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
+                                                     permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
+                                                 defaultAudience:FBSessionDefaultAudienceNone
+                                                 urlSchemeSuffix:nil
+                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+    
+    
+    [self.session openWithCompletionHandler:^(FBSession *session,
+                                                     FBSessionState status,
+                                                     NSError *error) {
+
+
+    }];
+
+}
+- (void)logout {
+    
+    [[FBSession activeSession] closeAndClearTokenInformation];
+}
 // Helper method to wrap logic for handling app links.
 - (void)handleAppLink:(FBAccessTokenData *)appLinkToken {
     
     // Initialize a new blank session instance...
-    FBSession *appLinkSession = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                                                     permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
-                                                 defaultAudience:FBSessionDefaultAudienceNone
-                                                 urlSchemeSuffix:nil
-                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance] ];
-    [FBSession setActiveSession:appLinkSession];
+    self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
+                                        permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
+                                    defaultAudience:FBSessionDefaultAudienceNone
+                                    urlSchemeSuffix:nil
+                                 tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+
+    [FBSession setActiveSession:self.session];
     // ... and open it from the App Link's Token.
-    [appLinkSession openFromAccessTokenData:appLinkToken
+    [self.session openFromAccessTokenData:appLinkToken
                           completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
                               // Forward any errors to the FBLoginView delegate.
                               if (error) {
@@ -80,6 +119,9 @@
                                                         otherButtonTitles:nil] show];
                                   }
                               }
+                              
+                              
+                              [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:(error) ? NO : YES]];
                           }];
 }
 
@@ -96,7 +138,7 @@
                 NSLog(@"INFO: Ignoring app link because current session is open.");
             }//if
             else {
-                [self handleAppLink:call.accessTokenData];
+                [_sharedInstance handleAppLink:call.accessTokenData];
             }//else
         }//if
     }];
@@ -116,7 +158,7 @@
 //    }];
 //}
 
-- (void)fecthFreindsWithCompletionHandler:(FacebookManagerRequestHandler)handler {
+- (void)fecthFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler {
     
     NSString *query = @"SELECT uid, name, current_location.id, pic_square, current_location.latitude, current_location.longitude, current_location, current_location  FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
     
