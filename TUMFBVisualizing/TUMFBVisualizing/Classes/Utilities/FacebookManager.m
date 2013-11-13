@@ -16,14 +16,11 @@
 @implementation FacebookManager
 
 static FacebookManager *_sharedInstance = nil;
-+ (FacebookManager*)sharedManager {
-    // 1
 
++ (FacebookManager*)sharedManager {
     
-    // 2
     static dispatch_once_t oncePredicate;
-    
-    // 3
+
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[FacebookManager alloc] init];
     });
