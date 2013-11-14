@@ -27,10 +27,10 @@
 static CoreDataUtility *cdUtilityInstance = nil;
 
 
-NSString* const kCoreDataBundlePath = @"IdGardModel.momd";
-NSString* const kCoreDataModelName = @"IdGardModel";
-NSString* const kCoreDataStorePath = @"IdGardModel.xcdatamodeld.sqlite";
-NSString* const kDefaultCDStorePath = @"IdGardModel.xcdatamodeld";
+NSString* const kCoreDataBundlePath = @"TUMFBVisualizing.momd";
+NSString* const kCoreDataModelName = @"TUMFBVisualizing";
+NSString* const kCoreDataStorePath = @"TUMFBVisualizing.xcdatamodeld.sqlite";
+NSString* const kDefaultCDStorePath = @"TUMFBVisualizing.xcdatamodeld";
 
 
 #pragma mark -
@@ -59,8 +59,6 @@ NSString* const kDefaultCDStorePath = @"IdGardModel.xcdatamodeld";
 
 
 - (NSManagedObjectContext *)context {
-    
-
     
     NSThread *currentThread = [NSThread currentThread];
     NSManagedObjectContext *manageContext = nil;

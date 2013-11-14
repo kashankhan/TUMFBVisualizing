@@ -11,6 +11,15 @@
 
 @implementation AppDAL
 
+- (id)init {
+
+    self = [super init];
+    if (self) {
+        [self setCoreDataUtility:[CoreDataUtility sharedInstance]];
+    }
+    
+    return self;
+}
 
 - (void)saveContext {
     
@@ -25,23 +34,23 @@
 - (Friend *)getFriend:(NSString *)uid {
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uid = %@", uid];
-    return (Friend*)[self getObjectWithEntity:@"Friend" withPredicate:predicate createNewIfNotFound:YES];
+    return (Friend*)[self getObjectWithEntity:NSStringFromClass([Friend class]) withPredicate:predicate createNewIfNotFound:YES];
 }
 
 - (Location *)getLocation:(NSString *)locationId {
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"locationId = %@", locationId];
-    return (Location*)[self getObjectWithEntity:@"Location" withPredicate:predicate createNewIfNotFound:YES];
+    return (Location*)[self getObjectWithEntity:NSStringFromClass([Location class])  withPredicate:predicate createNewIfNotFound:YES];
 }
 
 - (NSManagedObject*)getObjectWithEntity:(NSString*)entity withPredicate:(NSPredicate*)predicate createNewIfNotFound:(BOOL)create {
     
     NSManagedObject *manageObject = nil;
-    NSArray *list = [_coreDataUtility fetchRecordsForEntity:entity sortBy:nil withPredicate:predicate];
+    NSArray *list = [self.coreDataUtility fetchRecordsForEntity:entity sortBy:nil withPredicate:predicate];
     // check if the user info is no exist create the new one.
     if (![list count]) {
         if (create) {
-            manageObject = [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:[_coreDataUtility managedObjectContext]];
+            manageObject = [NSEntityDescription insertNewObjectForEntityForName:entity inManagedObjectContext:[self.coreDataUtility context]];
         }//if
     }//if
     else {

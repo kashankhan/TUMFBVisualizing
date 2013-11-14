@@ -27,6 +27,7 @@
 		C06AB9DA1825C01A0032E2AA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B51825C0190032E2AA /* CoreData.framework */; };
 		C06AB9E21825C01A0032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9E01825C01A0032E2AA /* InfoPlist.strings */; };
 		C06AB9E41825C01A0032E2AA /* TUMFBVisualizingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */; };
+		C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */; };
 		C0AB9DD618340079003AAC87 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = C0AB9DD318340079003AAC87 /* Friend.m */; };
 		C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D64AF218315EFE008D460F /* MapKit.framework */; };
 		C0D64AF71831652E008D460F /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AF61831652E008D460F /* FacebookManager.m */; };
@@ -75,6 +76,8 @@
 		C06AB9DF1825C01A0032E2AA /* TUMFBVisualizingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TUMFBVisualizingTests-Info.plist"; sourceTree = "<group>"; };
 		C06AB9E11825C01A0032E2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TUMFBVisualizingTests.m; sourceTree = "<group>"; };
+		C07BCBDD18351B5500946BAF /* MapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotation.h; sourceTree = "<group>"; };
+		C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewAnnotation.m; sourceTree = "<group>"; };
 		C0AB9DD218340079003AAC87 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		C0AB9DD318340079003AAC87 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		C0D64AF218315EFE008D460F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -245,6 +248,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C07BCBDC18351B4000946BAF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C07BCBDD18351B5500946BAF /* MapViewAnnotation.h */,
+				C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C0D64AF418316502008D460F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +281,7 @@
 				C0D64AFC18317830008D460F /* AppConstants */,
 				C0E55D2D18315C0B0087AF4B /* AppDelegate */,
 				C0E55D3018315C0B0087AF4B /* Controllers */,
+				C07BCBDC18351B4000946BAF /* Views */,
 				C0D64AF418316502008D460F /* Utilities */,
 				C0164B171833FC4600B957A7 /* BAL */,
 				C0164B191833FC4600B957A7 /* DAL */,
@@ -431,6 +444,7 @@
 				C0D64AFF18317848008D460F /* AppConstants.m in Sources */,
 				C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */,
 				C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */,
+				C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */,
 				C0164B241833FCE600B957A7 /* AppDAL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +581,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TUMFBVisualizing/TUMFBVisualizing-Prefix.pch";
 				INFOPLIST_FILE = "TUMFBVisualizing/TUMFBVisualizing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -584,6 +599,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TUMFBVisualizing/TUMFBVisualizing-Prefix.pch";
 				INFOPLIST_FILE = "TUMFBVisualizing/TUMFBVisualizing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

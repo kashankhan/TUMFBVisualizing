@@ -12,7 +12,6 @@
 @interface FriendsMapViewController : BaseViewViewController <MKMapViewDelegate> {
 
     __weak IBOutlet MKMapView *_mapView;
-    __weak IBOutlet UIView *_containerView;
 }
 
 @end
