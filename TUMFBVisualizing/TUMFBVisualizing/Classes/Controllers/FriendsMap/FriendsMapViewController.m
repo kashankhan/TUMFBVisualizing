@@ -151,6 +151,7 @@
     if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
         MapViewAnnotation *mapAnnotation = (MapViewAnnotation *)annotation;
         [annotationView setImageWithUri:mapAnnotation.profile.picUri];
+        [annotationView setCanShowCallout:YES];
         annotationView.annotation = annotation;
     }
 
