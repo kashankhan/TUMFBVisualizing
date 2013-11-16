@@ -10,4 +10,6 @@
 
 @interface MapAnnotationView : MKAnnotationView
 
+- (void)setImageWithUri:(NSString *)uri;
+
 @end

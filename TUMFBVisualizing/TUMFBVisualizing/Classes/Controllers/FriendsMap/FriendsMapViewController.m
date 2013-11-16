@@ -12,6 +12,7 @@
 #import "MapViewAnnotation.h"
 #import "ImageView.h"
 #import "AnnotationCoordinateUtility.h"
+#import "MapAnnotationView.h"
 
 @interface FriendsMapViewController ()
 
@@ -55,7 +56,6 @@
     
     if (self.myProfile) {
         ImageView *imgView = [[ImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 40, 40.0f)];
-        [imgView setBackgroundColor:[UIColor redColor]];
         [imgView imageWithUri:self.myProfile.picUri];
         [imgView makeRoundedCorners];
         [navTitleView addSubview:imgView];
@@ -68,7 +68,7 @@
         [navTitleView addSubview:lbl];
         
         self.navigationItem.titleView = navTitleView;
-    }
+    }//if
 
     
     NSString *btnTitle = [[FacebookManager sharedManager] isSessionActive] ? @"Logout" :  @"Login";
@@ -142,23 +142,15 @@
 {
     static NSString *annotationViewID = @"annotationViewID";
     
-    MKAnnotationView *annotationView = (MKAnnotationView *)[theMapView dequeueReusableAnnotationViewWithIdentifier:annotationViewID];
+    MapAnnotationView *annotationView = (MapAnnotationView *)[theMapView dequeueReusableAnnotationViewWithIdentifier:annotationViewID];
     
     if (annotationView == nil) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewID];
+        annotationView = [[MapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewID];
     }
 
     if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
         MapViewAnnotation *mapAnnotation = (MapViewAnnotation *)annotation;
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:mapAnnotation.profile.picUri]];
-            UIImage *image = [UIImage imageWithData:data];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                annotationView.image = [self imageWithRoundedCornersRadius:20 withImage:image];
-            });
-        });
-        
+        [annotationView setImageWithUri:mapAnnotation.profile.picUri];
         annotationView.annotation = annotation;
     }
 
@@ -166,26 +158,6 @@
     return annotationView;
 }
 
-- (UIImage *) imageWithRoundedCornersRadius:(float) radius withImage:(UIImage *)image
-{
-    // Begin a new image that will be the new image with the rounded corners
-    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
-    
-    // Add a clip before drawing anything, in the shape of an rounded rect
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius] addClip];
-    
-    // Draw your image
-    [image drawInRect:rect];
-    
-    // Get the image, here setting the UIImageView image
-    UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Lets forget about that we were drawing
-    UIGraphicsEndImageContext();
-    
-    return roundedImage;
-}
 // When a map annotation point is added, zoom to it (1500 range)
 //- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 //{
