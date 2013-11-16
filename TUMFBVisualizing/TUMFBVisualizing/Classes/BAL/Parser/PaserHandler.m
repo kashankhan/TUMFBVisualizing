@@ -28,8 +28,6 @@
         [friend setPicUri:picUri];
         [friend setName:name];
         
-        [friends addObject:friend];
-        
         NSDictionary *locationInfo = [friendInfo valueForKey:@"current_location"];
         
         if (locationInfo && ![locationInfo isEqual:[NSNull null]]) {
@@ -58,8 +56,10 @@
             [friend setCurrentLocationInfo:location];
             [location addProfileInfoObject:friend];
             
-            [friends addObject:friend];
+
         }//if
+        
+            [friends addObject:friend];
     }//for
     
     [appDal saveContext];

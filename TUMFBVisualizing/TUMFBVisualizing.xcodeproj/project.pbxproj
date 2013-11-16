@@ -41,6 +41,7 @@
 		C0EEB62D1837E3BF00F5213F /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62C1837E3BF00F5213F /* ImageView.m */; };
 		C0EEB6301837E7C400F5213F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62F1837E7C400F5213F /* LocationManager.m */; };
 		C0EEB6391837F73F00F5213F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EEB6381837F73F00F5213F /* QuartzCore.framework */; };
+		C0EFF43618381126007666B8 /* AnnotationCoordinateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		C0EEB62E1837E7C400F5213F /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		C0EEB62F1837E7C400F5213F /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		C0EEB6381837F73F00F5213F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C0EFF43418381126007666B8 /* AnnotationCoordinateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationCoordinateUtility.h; sourceTree = "<group>"; };
+		C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationCoordinateUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +284,8 @@
 				C0D64AF61831652E008D460F /* FacebookManager.m */,
 				C0EEB62E1837E7C400F5213F /* LocationManager.h */,
 				C0EEB62F1837E7C400F5213F /* LocationManager.m */,
+				C0EFF43418381126007666B8 /* AnnotationCoordinateUtility.h */,
+				C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				C0EEB62D1837E3BF00F5213F /* ImageView.m in Sources */,
 				C0D64AF71831652E008D460F /* FacebookManager.m in Sources */,
 				C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */,
+				C0EFF43618381126007666B8 /* AnnotationCoordinateUtility.m in Sources */,
 				C06AB9BE1825C01A0032E2AA /* main.m in Sources */,
 				C0EEB6271837D30500F5213F /* Profile.m in Sources */,
 				C06AB9C81825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld in Sources */,

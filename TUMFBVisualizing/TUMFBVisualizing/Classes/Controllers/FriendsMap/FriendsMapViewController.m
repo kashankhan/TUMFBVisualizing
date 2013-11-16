@@ -11,6 +11,7 @@
 #import "AppDAL.h"
 #import "MapViewAnnotation.h"
 #import "ImageView.h"
+#import "AnnotationCoordinateUtility.h"
 
 @interface FriendsMapViewController ()
 
@@ -122,15 +123,18 @@
 }
 
 - (void)markFriendsOnMap:(NSArray *)friends {
-    [friends enumerateObjectsUsingBlock:^(Profile *friend, NSUInteger idx, BOOL *stop) {
-
+    
+    NSMutableArray *annotations = [NSMutableArray array];
+    for (Profile *friend in friends) {
         if (friend.currentLocationInfo) {
             MapViewAnnotation *newAnnotation = [[MapViewAnnotation alloc] initWithProfile:friend];
-            [_mapView addAnnotation:newAnnotation];
-        }
-      
-        [self zoomToFitMapAnnotations:_mapView];
-    }];
+            [annotations addObject:newAnnotation];
+            
+        }//if
+    }//for
+    [AnnotationCoordinateUtility mutateCoordinatesOfClashingAnnotations:annotations];
+    [_mapView addAnnotations:annotations];
+    [self zoomToFitMapAnnotations:_mapView];
 
 }
 
