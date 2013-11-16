@@ -23,16 +23,15 @@
         NSString *picUri = [friendInfo valueForKey:@"pic_square"];
         NSString *name = [friendInfo valueForKey:@"name"];
 
-        Friend *friend = [appDal getFriend:uid];
+        Profile *friend = [appDal getProfile:uid];
         [friend setUid:uid];
         [friend setPicUri:picUri];
         [friend setName:name];
         
-            [friends addObject:friend];
+        [friends addObject:friend];
         
         NSDictionary *locationInfo = [friendInfo valueForKey:@"current_location"];
         
-        NSLog(@"locationInfo : %@",locationInfo);
         if (locationInfo && ![locationInfo isEqual:[NSNull null]]) {
             
             NSString *locationId = [locationInfo valueForKey:@"id"];
@@ -57,7 +56,7 @@
              
             
             [friend setCurrentLocationInfo:location];
-            [location addFrientInfoObject:friend];
+            [location addProfileInfoObject:friend];
             
             [friends addObject:friend];
         }//if
@@ -65,6 +64,26 @@
     
     [appDal saveContext];
     return friends;
+}
+
+- (id)parseMyProfile:(id)object {
+
+    AppDAL *appDal = [[AppDAL alloc] init];
+    Profile *profile = nil;
+    if (object) {
+        NSString *name = [object valueForKey:@"name"];
+        NSString *username = [object valueForKey:@"username"];
+        NSString *uid = [object valueForKey:@"id"];
+        NSString *picUri = [NSString stringWithFormat:@"http://graph.facebook.com/%@/picture?type=square", username];
+        profile = [appDal getProfile:uid];
+        [profile setName:name];
+        [profile setUid:uid];
+        [profile setPicUri:picUri];
+        [profile setIsOwnProfile:[NSNumber numberWithBool:YES]];
+    }
+    
+    [appDal saveContext];
+    return profile;
 }
 
 @end

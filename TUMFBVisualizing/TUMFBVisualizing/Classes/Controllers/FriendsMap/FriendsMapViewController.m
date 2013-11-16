@@ -10,9 +10,11 @@
 #import "PaserHandler.h"
 #import "AppDAL.h"
 #import "MapViewAnnotation.h"
+#import "ImageView.h"
 
 @interface FriendsMapViewController ()
 
+@property (nonatomic, strong) Profile *myProfile;
 @end
 
 @implementation FriendsMapViewController
@@ -35,7 +37,7 @@
 
 - (void)setUpSubViews {
     
-    [_mapView setDelegate:self];
+    [_mapView setUserInteractionEnabled:YES];
     [self subscribeNotificaitons];
     [self setNavigationItems];
 }
@@ -48,6 +50,26 @@
 
 - (void)setNavigationItems {
 
+    UIView *navTitleView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 40.0f)];
+    
+    if (self.myProfile) {
+        ImageView *imgView = [[ImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 40, 40.0f)];
+        [imgView setBackgroundColor:[UIColor redColor]];
+        [imgView imageWithUri:self.myProfile.picUri];
+        [imgView makeRoundedCorners];
+        [navTitleView addSubview:imgView];
+        
+        UILabel *lbl = [[UILabel alloc] init];
+        [lbl setText:self.myProfile.name];
+        [lbl sizeToFit];
+        [lbl setFrame:CGRectMake(CGRectGetMinX(imgView.frame) + CGRectGetWidth(imgView.frame) + 5, CGRectGetMinY(imgView.frame), CGRectGetWidth(lbl.frame), CGRectGetHeight(imgView.frame))];
+        
+        [navTitleView addSubview:lbl];
+        
+        self.navigationItem.titleView = navTitleView;
+    }
+
+    
     NSString *btnTitle = [[FacebookManager sharedManager] isSessionActive] ? @"Logout" :  @"Login";
     SEL selector = ([[FacebookManager sharedManager] isSessionActive]) ? NSSelectorFromString(@"performLogout:") : NSSelectorFromString(@"performLogin:");
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:btnTitle style:UIBarButtonItemStylePlain target:self action:selector];
@@ -75,30 +97,36 @@
     BOOL userLogin = [[notification object] boolValue];
     [self setNavigationItems];
     if (userLogin) {
+        [self fectchMyProfile];
         [self fetchFriends];
     }
 }
 
-- (void)fetchFriends{
+- (void)fetchFriends {
 
-    [[FacebookManager sharedManager] fecthFreindsLocationWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    [[FacebookManager sharedManager] fetchFreindsLocationWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        
         PaserHandler *parserHandler = [[PaserHandler alloc] init];
         NSArray *friends = [parserHandler parseFriends:result];
         [self markFriendsOnMap:friends];
     }];
 }
 
-- (void)markFriendsOnMap:(NSArray *)friends {
-    [friends enumerateObjectsUsingBlock:^(Friend *friend, NSUInteger idx, BOOL *stop) {
-        
-        CLLocationCoordinate2D location;
-        if (friend.currentLocationInfo) {
-            location.latitude = [friend.currentLocationInfo.latitude doubleValue];
-            location.longitude = [friend.currentLocationInfo.longitude doubleValue];
-            // Add the annotation to our map view
-            MapViewAnnotation *newAnnotation = [[MapViewAnnotation alloc] initWithTitle:friend.name andCoordinate:location];
-            [_mapView addAnnotation:newAnnotation];
+- (void)fectchMyProfile {
 
+    [[FacebookManager sharedManager] fetchMyProfile:^(FBRequestConnection *connection, id result, NSError *error) {
+        PaserHandler *parserHandler = [[PaserHandler alloc] init];
+        self.myProfile = [parserHandler parseMyProfile:result];
+        [self setNavigationItems];
+    }];
+}
+
+- (void)markFriendsOnMap:(NSArray *)friends {
+    [friends enumerateObjectsUsingBlock:^(Profile *friend, NSUInteger idx, BOOL *stop) {
+
+        if (friend.currentLocationInfo) {
+            MapViewAnnotation *newAnnotation = [[MapViewAnnotation alloc] initWithProfile:friend];
+            [_mapView addAnnotation:newAnnotation];
         }
       
         [self zoomToFitMapAnnotations:_mapView];
@@ -106,6 +134,54 @@
 
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    static NSString *annotationViewID = @"annotationViewID";
+    
+    MKAnnotationView *annotationView = (MKAnnotationView *)[theMapView dequeueReusableAnnotationViewWithIdentifier:annotationViewID];
+    
+    if (annotationView == nil) {
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewID];
+    }
+
+    if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
+        MapViewAnnotation *mapAnnotation = (MapViewAnnotation *)annotation;
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        dispatch_async(queue, ^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:mapAnnotation.profile.picUri]];
+            UIImage *image = [UIImage imageWithData:data];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                annotationView.image = [self imageWithRoundedCornersRadius:20 withImage:image];
+            });
+        });
+        
+        annotationView.annotation = annotation;
+    }
+
+    
+    return annotationView;
+}
+
+- (UIImage *) imageWithRoundedCornersRadius:(float) radius withImage:(UIImage *)image
+{
+    // Begin a new image that will be the new image with the rounded corners
+    UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
+    
+    // Add a clip before drawing anything, in the shape of an rounded rect
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:radius] addClip];
+    
+    // Draw your image
+    [image drawInRect:rect];
+    
+    // Get the image, here setting the UIImageView image
+    UIImage *roundedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Lets forget about that we were drawing
+    UIGraphicsEndImageContext();
+    
+    return roundedImage;
+}
 // When a map annotation point is added, zoom to it (1500 range)
 //- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 //{

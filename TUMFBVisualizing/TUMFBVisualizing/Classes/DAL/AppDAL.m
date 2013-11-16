@@ -27,14 +27,14 @@
 }
 - (NSArray*)getAllFriends {
     
-    return [self.coreDataUtility fetchRecordsForEntity:@"Friend" sortBy:nil withPredicate:nil];
+    return [self.coreDataUtility fetchRecordsForEntity:@"Friend" sortBy:nil withPredicate:[NSPredicate predicateWithFormat:@"isOwnProfile = NO"]];
     
 }
 
-- (Friend *)getFriend:(NSString *)uid {
+- (Profile *)getProfile:(NSString *)uid{
 
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uid = %@", uid];
-    return (Friend*)[self getObjectWithEntity:NSStringFromClass([Friend class]) withPredicate:predicate createNewIfNotFound:YES];
+    return (Profile*)[self getObjectWithEntity:NSStringFromClass([Profile class]) withPredicate:predicate createNewIfNotFound:YES];
 }
 
 - (Location *)getLocation:(NSString *)locationId {

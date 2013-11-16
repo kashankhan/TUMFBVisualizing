@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Friend">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="picUri" optional="YES" attributeType="String">
-            <userInfo/>
-        </attribute>
-        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="currentLocationInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="frientInfo" inverseEntity="Location" syncable="YES"/>
-        <userInfo/>
-    </entity>
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,10 +9,19 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="frientInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Friend" inverseName="currentLocationInfo" inverseEntity="Friend" syncable="YES"/>
+        <relationship name="profileInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="currentLocationInfo" inverseEntity="Profile" syncable="YES"/>
+    </entity>
+    <entity name="Profile" representedClassName="Profile" syncable="YES">
+        <attribute name="isOwnProfile" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picUri" optional="YES" attributeType="String">
+            <userInfo/>
+        </attribute>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="currentLocationInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="profileInfo" inverseEntity="Location" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Friend" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Location" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Location" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Profile" positionX="-182" positionY="39" width="128" height="118"/>
     </elements>
 </model>

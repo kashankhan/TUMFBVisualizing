@@ -7,18 +7,25 @@
 //
 
 #import "MapViewAnnotation.h"
+#import "Profile.h"
+#import "Location.h"
 
 @implementation MapViewAnnotation
 
-
-
-- (id)initWithTitle:(NSString *)ttl andCoordinate:(CLLocationCoordinate2D)coordinat2D {
-
-	self = [super init];
+- (id)initWithProfile:(Profile *)profile {
+    
+    self = [super init];
 	
     if (self) {
-        self.title = ttl;
-        self.coordinate = coordinat2D;
+        CLLocationCoordinate2D location;
+        if (profile.currentLocationInfo) {
+            location.latitude = [profile.currentLocationInfo.latitude doubleValue];
+            location.longitude = [profile.currentLocationInfo.longitude doubleValue];
+            self.title = profile.name;
+            self.coordinate = location;
+            self.profile = profile;
+            
+        }
     }
 	return self;
 }

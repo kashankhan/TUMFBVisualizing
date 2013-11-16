@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import <MapKit/MapKit.h>
+
+@class Profile;
 
 @interface MapViewAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic, strong) Profile *profile;
 
-- (id)initWithTitle:(NSString *)ttl andCoordinate:(CLLocationCoordinate2D)coordinat2D;
+- (id)initWithProfile:(Profile *)profile;
 
 @end

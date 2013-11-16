@@ -11,5 +11,6 @@
 @interface PaserHandler : NSObject
 
 - (id)parseFriends:(id)object;
+- (id)parseMyProfile:(id)object;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Friend.h"
+#import "Profile.h"
 #import "Location.h"
 
 @class CoreDataUtility;
@@ -17,7 +17,7 @@
 @property (nonatomic, strong) CoreDataUtility *coreDataUtility;
 
 - (NSArray *)getAllFriends;
-- (Friend *)getFriend:(NSString *)uid;
+- (Profile *)getProfile:(NSString *)uid;
 - (Location *)getLocation:(NSString *)locationId;
 - (void)saveContext;
 

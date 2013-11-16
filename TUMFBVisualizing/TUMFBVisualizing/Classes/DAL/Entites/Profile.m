@@ -1,20 +1,21 @@
 //
-//  Friend.m
+//  Profile.m
 //  TUMFBVisualizing
 //
-//  Created by Kashan Khan on 13/11/2013.
+//  Created by Kashan Khan on 16/11/2013.
 //  Copyright (c) 2013 Kashan Khan. All rights reserved.
 //
 
-#import "Friend.h"
+#import "Profile.h"
 #import "Location.h"
 
 
-@implementation Friend
+@implementation Profile
 
 @dynamic name;
 @dynamic picUri;
 @dynamic uid;
+@dynamic isOwnProfile;
 @dynamic currentLocationInfo;
 
 @end

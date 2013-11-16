@@ -39,8 +39,13 @@ static FacebookManager *_sharedInstance = nil;
     [FBSession.activeSession close];
 }
 
+- (void)logout {
+    
+    [[FBSession activeSession] closeAndClearTokenInformation];
+}
+
 - (void)perfromLogin {
-   
+    
     self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
                                                      permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
                                                  defaultAudience:FBSessionDefaultAudienceNone
@@ -52,14 +57,12 @@ static FacebookManager *_sharedInstance = nil;
                                                      FBSessionState status,
                                                      NSError *error) {
 
+        NSLog(@"masdfasdf : %@", session.accessTokenData);
 
     }];
 
 }
-- (void)logout {
-    
-    [[FBSession activeSession] closeAndClearTokenInformation];
-}
+
 // Helper method to wrap logic for handling app links.
 - (void)handleAppLink:(FBAccessTokenData *)appLinkToken {
     
@@ -155,7 +158,17 @@ static FacebookManager *_sharedInstance = nil;
 //    }];
 //}
 
-- (void)fecthFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler {
+- (void)fetchMyProfile:(FacebookManagerRequestHandler)handler {
+    
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        
+        if (handler) {
+            handler(connection, result, error);
+        }//if
+    }];
+}
+
+- (void)fetchFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler {
     
     NSString *query = @"SELECT uid, name, current_location.id, pic_square, current_location.latitude, current_location.longitude, current_location, current_location  FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
     
@@ -176,11 +189,6 @@ static FacebookManager *_sharedInstance = nil;
 //                                  NSLog(@"Result: %@", result);
 //                              }
 //                          }];
-}
-
-- (FBLoginView*)getFBLoginViewWithFrame:(CGRect)rect {
-    
-    return [[FBLoginView alloc] initWithFrame:rect];
 }
 
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler {
@@ -207,11 +215,6 @@ static FacebookManager *_sharedInstance = nil;
                                    result,
                                           error);
                               }//if
-//                              if (error) {
-//                                  NSLog(@"Error: %@", [error localizedDescription]);
-//                              } else {
-//                                  NSLog(@"Result: %@", result);
-//                              }
                           }];
 }
 @end

@@ -22,8 +22,8 @@ typedef void (^FacebookManagerRequestHandler)(FBRequestConnection *connection,
 - (void)logout;
 - (void)handleAppLink:(FBAccessTokenData *)appLinkToken;
 - (BOOL)openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
-- (FBLoginView*)getFBLoginViewWithFrame:(CGRect)rect;
-- (void)fecthFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler;;
+- (void)fetchMyProfile:(FacebookManagerRequestHandler)handler;
+- (void)fetchFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler;;
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler;
 
 
