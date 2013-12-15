@@ -27,7 +27,7 @@
 }
 - (NSArray*)getAllFriends {
     
-    return [self.coreDataUtility fetchRecordsForEntity:@"Friend" sortBy:nil withPredicate:[NSPredicate predicateWithFormat:@"isOwnProfile = NO"]];
+    return [self.coreDataUtility fetchRecordsForEntity:NSStringFromClass([Profile class]) sortBy:nil withPredicate:[NSPredicate predicateWithFormat:@"isOwnProfile = NO"]];
     
 }
 
@@ -41,6 +41,20 @@
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"locationId = %@", locationId];
     return (Location*)[self getObjectWithEntity:NSStringFromClass([Location class])  withPredicate:predicate createNewIfNotFound:YES];
+}
+
+- (Thread *)getThread:(NSString *)threadId {
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"threadId = %@", threadId];
+    return (Thread*)[self getObjectWithEntity:NSStringFromClass([Thread class])  withPredicate:predicate createNewIfNotFound:YES];
+}
+
+
+- (NSArray *)getAllThreadsBetweenProfiles:(NSString *)profileId1 person2:(NSString *)profileId2 {
+  
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recipients CONTAINS[c] %@ AND recipients CONTAINS[c] %@", profileId1, profileId2];
+    return [self.coreDataUtility fetchRecordsForEntity:NSStringFromClass([Thread class]) sortBy:nil withPredicate:predicate];
+
 }
 
 - (NSManagedObject*)getObjectWithEntity:(NSString*)entity withPredicate:(NSPredicate*)predicate createNewIfNotFound:(BOOL)create {

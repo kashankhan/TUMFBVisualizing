@@ -28,6 +28,9 @@
 		C06AB9E21825C01A0032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9E01825C01A0032E2AA /* InfoPlist.strings */; };
 		C06AB9E41825C01A0032E2AA /* TUMFBVisualizingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */; };
 		C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */; };
+		C0B427B0185A6802008A4284 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B427AF185A6802008A4284 /* NavigationBarView.m */; };
+		C0B427B3185A70C0008A4284 /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B427B2185A70C0008A4284 /* FriendDetailViewController.m */; };
+		C0B427B6185A7118008A4284 /* MKMapView+Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B427B5185A7118008A4284 /* MKMapView+Zoom.m */; };
 		C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D64AF218315EFE008D460F /* MapKit.framework */; };
 		C0D64AF71831652E008D460F /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AF61831652E008D460F /* FacebookManager.m */; };
 		C0D64AFF18317848008D460F /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AFE18317848008D460F /* AppConstants.m */; };
@@ -36,12 +39,13 @@
 		C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */; };
 		C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3F18315D730087AF4B /* MBProgressHUD.m */; };
 		C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E55D4118315EC30087AF4B /* CoreLocation.framework */; };
-		C0EEB6271837D30500F5213F /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB6261837D30500F5213F /* Profile.m */; };
 		C0EEB62A1837D30500F5213F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB6291837D30500F5213F /* Location.m */; };
 		C0EEB62D1837E3BF00F5213F /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62C1837E3BF00F5213F /* ImageView.m */; };
 		C0EEB6301837E7C400F5213F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62F1837E7C400F5213F /* LocationManager.m */; };
 		C0EEB6391837F73F00F5213F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EEB6381837F73F00F5213F /* QuartzCore.framework */; };
 		C0EFF43618381126007666B8 /* AnnotationCoordinateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */; };
+		C0F927E3185B927400C0CCB6 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F927E2185B927400C0CCB6 /* Profile.m */; };
+		C0F927E6185B927400C0CCB6 /* Thread.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F927E5185B927400C0CCB6 /* Thread.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,12 @@
 		C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TUMFBVisualizingTests.m; sourceTree = "<group>"; };
 		C07BCBDD18351B5500946BAF /* MapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotation.h; sourceTree = "<group>"; };
 		C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewAnnotation.m; sourceTree = "<group>"; };
+		C0B427AE185A6802008A4284 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
+		C0B427AF185A6802008A4284 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
+		C0B427B1185A70C0008A4284 /* FriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailViewController.h; sourceTree = "<group>"; };
+		C0B427B2185A70C0008A4284 /* FriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailViewController.m; sourceTree = "<group>"; };
+		C0B427B4185A7118008A4284 /* MKMapView+Zoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Zoom.h"; sourceTree = "<group>"; };
+		C0B427B5185A7118008A4284 /* MKMapView+Zoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Zoom.m"; sourceTree = "<group>"; };
 		C0D64AF218315EFE008D460F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C0D64AF51831652E008D460F /* FacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookManager.h; sourceTree = "<group>"; };
 		C0D64AF61831652E008D460F /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
@@ -97,8 +107,6 @@
 		C0E55D3E18315D730087AF4B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C0E55D3F18315D730087AF4B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C0E55D4118315EC30087AF4B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C0EEB6251837D30500F5213F /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
-		C0EEB6261837D30500F5213F /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		C0EEB6281837D30500F5213F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		C0EEB6291837D30500F5213F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		C0EEB62B1837E3BF00F5213F /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
@@ -108,6 +116,10 @@
 		C0EEB6381837F73F00F5213F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C0EFF43418381126007666B8 /* AnnotationCoordinateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationCoordinateUtility.h; sourceTree = "<group>"; };
 		C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationCoordinateUtility.m; sourceTree = "<group>"; };
+		C0F927E1185B927400C0CCB6 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		C0F927E2185B927400C0CCB6 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		C0F927E4185B927400C0CCB6 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
+		C0F927E5185B927400C0CCB6 /* Thread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thread.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */,
 				C0EEB6391837F73F00F5213F /* QuartzCore.framework in Frameworks */,
 				C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */,
-				C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */,
 				C06AB9B21825C0190032E2AA /* CoreGraphics.framework in Frameworks */,
 				C001ABBB182680380027434C /* FacebookSDK.framework in Frameworks */,
 				C06AB9B61825C0190032E2AA /* CoreData.framework in Frameworks */,
@@ -180,10 +192,12 @@
 		C0164B1D1833FC4600B957A7 /* Entites */ = {
 			isa = PBXGroup;
 			children = (
-				C0EEB6251837D30500F5213F /* Profile.h */,
-				C0EEB6261837D30500F5213F /* Profile.m */,
 				C0EEB6281837D30500F5213F /* Location.h */,
 				C0EEB6291837D30500F5213F /* Location.m */,
+				C0F927E4185B927400C0CCB6 /* Thread.h */,
+				C0F927E5185B927400C0CCB6 /* Thread.m */,
+				C0F927E1185B927400C0CCB6 /* Profile.h */,
+				C0F927E2185B927400C0CCB6 /* Profile.m */,
 			);
 			path = Entites;
 			sourceTree = "<group>";
@@ -273,6 +287,8 @@
 				C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */,
 				C024A7EA1838048600DBC699 /* MapAnnotationView.h */,
 				C024A7EB1838048600DBC699 /* MapAnnotationView.m */,
+				C0B427AE185A6802008A4284 /* NavigationBarView.h */,
+				C0B427AF185A6802008A4284 /* NavigationBarView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +302,8 @@
 				C0EEB62F1837E7C400F5213F /* LocationManager.m */,
 				C0EFF43418381126007666B8 /* AnnotationCoordinateUtility.h */,
 				C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */,
+				C0B427B4185A7118008A4284 /* MKMapView+Zoom.h */,
+				C0B427B5185A7118008A4284 /* MKMapView+Zoom.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -338,6 +356,8 @@
 			children = (
 				C0E55D3918315D290087AF4B /* FriendsMapViewController.h */,
 				C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */,
+				C0B427B1185A70C0008A4284 /* FriendDetailViewController.h */,
+				C0B427B2185A70C0008A4284 /* FriendDetailViewController.m */,
 			);
 			path = FriendsMap;
 			sourceTree = "<group>";
@@ -463,17 +483,21 @@
 				C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */,
 				C0EFF43618381126007666B8 /* AnnotationCoordinateUtility.m in Sources */,
 				C06AB9BE1825C01A0032E2AA /* main.m in Sources */,
-				C0EEB6271837D30500F5213F /* Profile.m in Sources */,
 				C06AB9C81825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld in Sources */,
+				C0B427B3185A70C0008A4284 /* FriendDetailViewController.m in Sources */,
+				C0B427B6185A7118008A4284 /* MKMapView+Zoom.m in Sources */,
 				C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */,
 				C0164B1E1833FC4600B957A7 /* CoreDataUtility.m in Sources */,
+				C0F927E3185B927400C0CCB6 /* Profile.m in Sources */,
 				C0EEB62A1837D30500F5213F /* Location.m in Sources */,
 				C024A7EC1838048600DBC699 /* MapAnnotationView.m in Sources */,
 				C0D64AFF18317848008D460F /* AppConstants.m in Sources */,
 				C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */,
 				C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */,
 				C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */,
+				C0F927E6185B927400C0CCB6 /* Thread.m in Sources */,
 				C0164B241833FCE600B957A7 /* AppDAL.m in Sources */,
+				C0B427B0185A6802008A4284 /* NavigationBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,7 +633,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TUMFBVisualizing/TUMFBVisualizing-Prefix.pch";
 				INFOPLIST_FILE = "TUMFBVisualizing/TUMFBVisualizing-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -627,7 +651,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TUMFBVisualizing/TUMFBVisualizing-Prefix.pch";
 				INFOPLIST_FILE = "TUMFBVisualizing/TUMFBVisualizing-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

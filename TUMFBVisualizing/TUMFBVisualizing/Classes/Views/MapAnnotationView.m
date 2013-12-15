@@ -7,6 +7,14 @@
 //
 
 #import "MapAnnotationView.h"
+#import "Profile.h"
+
+@interface MapAnnotationView()
+
+@property (assign, nonatomic) id target;
+@property (assign, nonatomic) SEL selector;
+@end
+
 
 @implementation MapAnnotationView
 
@@ -39,6 +47,21 @@
 }
 */
 
+- (void)addTagetForDisclose:(id)target action:(SEL)sector {
+    self.target = target;
+    self.selector = sector;
+    UIButton *disclosureBtn = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    [disclosureBtn addTarget:self action:@selector(disclosureDidPress:) forControlEvents:UIControlEventTouchUpInside];
+    self.rightCalloutAccessoryView = disclosureBtn;
+}
+
+- (void)disclosureDidPress:(id)sender {
+
+    if ([self.target respondsToSelector:self.selector]) {
+        [self.target performSelector:self.selector withObject:self.profile];
+    }
+
+}
 - (UIImage *) imageWithRoundedCornersRadius:(float) radius withImage:(UIImage *)image
 {
     // Begin a new image that will be the new image with the rounded corners

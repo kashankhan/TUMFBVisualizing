@@ -19,9 +19,17 @@
         </attribute>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="currentLocationInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="profileInfo" inverseEntity="Location" syncable="YES"/>
+        <relationship name="threadsInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Thread" inverseName="profilesInfo" inverseEntity="Thread" syncable="YES"/>
+    </entity>
+    <entity name="Thread" representedClassName="Thread" syncable="YES">
+        <attribute name="messageCount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recipients" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="threadId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="profilesInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="threadsInfo" inverseEntity="Profile" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="Profile" positionX="-182" positionY="39" width="128" height="118"/>
+        <element name="Location" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Profile" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Thread" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

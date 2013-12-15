@@ -118,27 +118,6 @@ NSString* const kDefaultCDStorePath = @"TUMFBVisualizing.xcdatamodeld";
  */
 - (NSManagedObjectModel *)managedObjectModel {
     
-//    if (nil == managedObjectModel) {
-//        
-//        /*checking for new path of database.
-//         - if new path of database exist than return that path.
-//         - for versioning the database use the version.plist list
-//         - it hold the version identifier path.
-//         */
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:kCoreDataModelName ofType:@"mom" inDirectory:kCoreDataBundlePath];
-//        
-//        NSURL *bundlePathUrl = nil;
-//        
-//        //Note: if new bundle path exist than retrun that managedObjectModel
-//        if (nil == bundlePath) {
-//            
-//            bundlePath = [[NSBundle mainBundle] pathForResource:kCoreDataModelName ofType:@"mom"];
-//        }
-//        
-//        bundlePathUrl = [NSURL fileURLWithPath:bundlePath];
-//        managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:bundlePathUrl];
-//    }
-    
     if (managedObjectModel != nil) {
         return managedObjectModel;
     }
@@ -180,7 +159,7 @@ NSString* const kDefaultCDStorePath = @"TUMFBVisualizing.xcdatamodeld";
                                  [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                                  [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
         
-        if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
+        if (![persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:storeURL options:options error:&error]) {
             
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 #import "Location.h"
+#import "Thread.h"
 
 @class CoreDataUtility;
 
@@ -19,6 +20,9 @@
 - (NSArray *)getAllFriends;
 - (Profile *)getProfile:(NSString *)uid;
 - (Location *)getLocation:(NSString *)locationId;
+- (Thread *)getThread:(NSString *)threadId;
+- (NSArray *)getAllThreadsBetweenProfiles:(NSString *)profileId1 person2:(NSString *)profileId2;
+
 - (void)saveContext;
 
 @end

@@ -47,7 +47,7 @@ static FacebookManager *_sharedInstance = nil;
 - (void)perfromLogin {
     
     self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                                                     permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
+                                                     permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]
                                                  defaultAudience:FBSessionDefaultAudienceNone
                                                  urlSchemeSuffix:nil
                                               tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
@@ -68,7 +68,7 @@ static FacebookManager *_sharedInstance = nil;
     
     // Initialize a new blank session instance...
     self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                                        permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location"]
+                                        permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]
                                     defaultAudience:FBSessionDefaultAudienceNone
                                     urlSchemeSuffix:nil
                                  tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
@@ -173,31 +173,23 @@ static FacebookManager *_sharedInstance = nil;
     NSString *query = @"SELECT uid, name, current_location.id, pic_square, current_location.latitude, current_location.longitude, current_location, current_location  FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1=me())";
     
     [self sendFqlRequest:query withCompletionHandler:handler];
-    
-//    // Set up the query parameter
-//    NSDictionary *queryParam = @{ @"q": query };
-//    // Make the API request that uses FQL
-//    [FBRequestConnection startWithGraphPath:@"/fql"
-//                                 parameters:queryParam
-//                                 HTTPMethod:@"GET"
-//                          completionHandler:^(FBRequestConnection *connection,
-//                                              id result,
-//                                              NSError *error) {
-//                              if (error) {
-//                                  NSLog(@"Error: %@", [error localizedDescription]);
-//                              } else {
-//                                  NSLog(@"Result: %@", result);
-//                              }
-//                          }];
+
 }
 
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler {
     
       NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND (originator IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR originator=me()) AND updated_time < now() ORDER BY message_count DESC";
-    
+//
+//          NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND updated_time < now() ORDER BY message_count DESC";
     
     [self sendFqlRequest:query withCompletionHandler:handler];
     
+}
+
+- (void)fetchUserUnRespondedFriendRequests:(FacebookManagerRequestHandler)handler  {
+   
+    NSString *query =  @"SELECT time, message, uid_from, uid_to FROM friend_request WHERE uid_to = me()";
+    [self sendFqlRequest:query withCompletionHandler:handler];
 }
 - (void)sendFqlRequest:(NSString *)query withCompletionHandler:(FacebookManagerRequestHandler)handler {
     

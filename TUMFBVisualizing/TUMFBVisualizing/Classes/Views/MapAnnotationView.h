@@ -8,8 +8,13 @@
 
 #import <MapKit/MapKit.h>
 
+@class Profile;
+
 @interface MapAnnotationView : MKAnnotationView
 
 - (void)setImageWithUri:(NSString *)uri;
+- (void)addTagetForDisclose:(id)target action:(SEL)sector;
+
+@property (nonatomic, strong) Profile *profile;
 
 @end

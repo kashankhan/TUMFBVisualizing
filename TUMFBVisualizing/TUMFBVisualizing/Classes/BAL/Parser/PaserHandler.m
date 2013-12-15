@@ -59,7 +59,7 @@
 
         }//if
         
-            [friends addObject:friend];
+        [friends addObject:friend];
     }//for
     
     [appDal saveContext];
@@ -86,4 +86,33 @@
     return profile;
 }
 
+- (id)parseInboxInfo:(id)object {
+
+    NSMutableArray *threads = [NSMutableArray array];
+    Thread *thread = nil;
+    AppDAL *appDal = [[AppDAL alloc] init];
+    
+    for (NSDictionary *threadInfo in [object valueForKey:@"data"]) {
+        NSString *msgCount = [[threadInfo valueForKey:@"message_count"] stringValue];
+        NSString *threadId = [[threadInfo valueForKey:@"message_count"] stringValue];
+        NSArray *recipients = [threadInfo valueForKey:@"recipients"];
+        
+        thread = [appDal getThread:threadId];
+        
+        [thread setThreadId:threadId];
+        [thread setMessageCount:msgCount];
+        [thread setRecipients:[recipients description]];
+        
+        for (NSString *recipientId in recipients) {
+            Profile *profile = [appDal getProfile:recipientId];
+            [thread addProfilesInfoObject:profile];
+            [profile addThreadsInfoObject:thread];
+        }
+
+        [threads addObject:thread];
+    }
+    
+    [appDal saveContext];
+    return threads;
+}
 @end

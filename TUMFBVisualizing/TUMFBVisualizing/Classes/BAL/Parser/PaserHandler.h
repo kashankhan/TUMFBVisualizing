@@ -12,5 +12,6 @@
 
 - (id)parseFriends:(id)object;
 - (id)parseMyProfile:(id)object;
+- (id)parseInboxInfo:(id)object;
 
 @end

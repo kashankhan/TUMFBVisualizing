@@ -13,10 +13,14 @@
 #import "ImageView.h"
 #import "AnnotationCoordinateUtility.h"
 #import "MapAnnotationView.h"
+#import "NavigationBarView.h"
+#import "MKMapView+Zoom.h"
+#import "FriendDetailViewController.h"
 
 @interface FriendsMapViewController ()
 
 @property (nonatomic, strong) Profile *myProfile;
+@property (nonatomic, weak) Profile *lastSelectedfriendProfile;
 @end
 
 @implementation FriendsMapViewController
@@ -40,6 +44,7 @@
 - (void)setUpSubViews {
     
     [_mapView setUserInteractionEnabled:YES];
+    [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
     [self subscribeNotificaitons];
     [self setNavigationItems];
 }
@@ -52,22 +57,9 @@
 
 - (void)setNavigationItems {
 
-    UIView *navTitleView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 200.0f, 40.0f)];
     
     if (self.myProfile) {
-        ImageView *imgView = [[ImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 40, 40.0f)];
-        [imgView imageWithUri:self.myProfile.picUri];
-        [imgView makeRoundedCorners];
-        [navTitleView addSubview:imgView];
-        
-        UILabel *lbl = [[UILabel alloc] init];
-        [lbl setText:self.myProfile.name];
-        [lbl sizeToFit];
-        [lbl setFrame:CGRectMake(CGRectGetMinX(imgView.frame) + CGRectGetWidth(imgView.frame) + 5, CGRectGetMinY(imgView.frame), CGRectGetWidth(lbl.frame), CGRectGetHeight(imgView.frame))];
-        
-        [navTitleView addSubview:lbl];
-        
-        self.navigationItem.titleView = navTitleView;
+        self.navigationItem.titleView = [NavigationBarView navigationBarView:self.myProfile.picUri title:self.myProfile.name];
     }//if
 
     
@@ -100,6 +92,7 @@
     if (userLogin) {
         [self fectchMyProfile];
         [self fetchFriends];
+        [self fetchUserInbox];
     }
 }
 
@@ -134,8 +127,17 @@
     }//for
     [AnnotationCoordinateUtility mutateCoordinatesOfClashingAnnotations:annotations];
     [_mapView addAnnotations:annotations];
-    [self zoomToFitMapAnnotations:_mapView];
+    [_mapView zoomToFitMapAnnotations];
 
+}
+
+- (void)fetchUserInbox {
+
+    [[FacebookManager sharedManager] fetchUserInboxWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        
+        PaserHandler *parserHandler = [[PaserHandler alloc] init];
+        [parserHandler parseInboxInfo:result];
+    }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
@@ -148,16 +150,22 @@
         annotationView = [[MapAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationViewID];
     }
 
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
     if ([annotation isKindOfClass:[MapViewAnnotation class]]) {
         MapViewAnnotation *mapAnnotation = (MapViewAnnotation *)annotation;
         [annotationView setImageWithUri:mapAnnotation.profile.picUri];
+        [annotationView setProfile:mapAnnotation.profile];
         [annotationView setCanShowCallout:YES];
+        [annotationView addTagetForDisclose:self action:@selector(openFriendDetailView:)];
         annotationView.annotation = annotation;
     }
 
     
     return annotationView;
 }
+
 
 // When a map annotation point is added, zoom to it (1500 range)
 //- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
@@ -169,33 +177,16 @@
 //	[mv selectAnnotation:mp animated:YES];
 //}
 
-- (void)zoomToFitMapAnnotations:(MKMapView *)mapView {
-    if ([mapView.annotations count] == 0) return;
-    
-    CLLocationCoordinate2D topLeftCoord;
-    topLeftCoord.latitude = -90;
-    topLeftCoord.longitude = 180;
-    
-    CLLocationCoordinate2D bottomRightCoord;
-    bottomRightCoord.latitude = 90;
-    bottomRightCoord.longitude = -180;
-    
-    for(id<MKAnnotation> annotation in mapView.annotations) {
-        topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
-        topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
-        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
-        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
-    }
-    
-    MKCoordinateRegion region;
-    region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
-    region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
-    region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * 1.1;
-    
-    // Add a little extra space on the sides
-    region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * 1.1;
-    
-    region = [mapView regionThatFits:region];
-    [mapView setRegion:region animated:YES];
+- (void)openFriendDetailView:(Profile*)profile {
+
+    self.lastSelectedfriendProfile = profile;
+    [self performSegueWithIdentifier:@"SeguePushFriendDetailViewController" sender:self];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    [[segue destinationViewController] setFriendProfile:self.lastSelectedfriendProfile];
+    [[segue destinationViewController] setMyProfile:self.myProfile];
+}
+
 @end
