@@ -23,6 +23,7 @@ static FacebookManager *_sharedInstance = nil;
 
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[FacebookManager alloc] init];
+        [_sharedInstance refreshFacebookSession];
     });
     
     return _sharedInstance;
@@ -41,37 +42,47 @@ static FacebookManager *_sharedInstance = nil;
 
 - (void)logout {
     
+    [self closeActiveSession];
     [[FBSession activeSession] closeAndClearTokenInformation];
 }
 
 - (void)perfromLogin {
     
-    self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                                                     permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]
-                                                 defaultAudience:FBSessionDefaultAudienceNone
-                                                 urlSchemeSuffix:nil
-                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
-    
+    self.session = [self getFacebookNewSession];
     
     [self.session openWithCompletionHandler:^(FBSession *session,
                                                      FBSessionState status,
                                                      NSError *error) {
-
-        NSLog(@"masdfasdf : %@", session.accessTokenData);
-
     }];
 
 }
 
+- (void)refreshFacebookSession {
+
+    if (self.session.state == FBSessionStateCreatedTokenLoaded) {
+        // even though we had a cached token, we need to login to make the session usable
+        [self.session openWithCompletionHandler:^(FBSession *session,
+                                                         FBSessionState status,
+                                                         NSError *error) {
+            // we recurse here, in order to update buttons and labels
+            [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:(error) ? NO : YES]];
+        }];
+    }
+}
+
+- (FBSession *)getFacebookNewSession {
+
+   return [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
+                         permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]
+                     defaultAudience:FBSessionDefaultAudienceNone
+                     urlSchemeSuffix:nil
+                  tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+}
 // Helper method to wrap logic for handling app links.
 - (void)handleAppLink:(FBAccessTokenData *)appLinkToken {
     
     // Initialize a new blank session instance...
-    self.session = [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                                        permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]
-                                    defaultAudience:FBSessionDefaultAudienceNone
-                                    urlSchemeSuffix:nil
-                                 tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+    self.session = [self getFacebookNewSession];
 
     [FBSession setActiveSession:self.session];
     // ... and open it from the App Link's Token.

@@ -58,9 +58,7 @@
 - (void)setNavigationItems {
 
     
-    if (self.myProfile) {
-        self.navigationItem.titleView = [NavigationBarView navigationBarView:self.myProfile.picUri title:self.myProfile.name];
-    }//if
+    self.navigationItem.titleView = (self.myProfile) ? [NavigationBarView navigationBarView:self.myProfile.picUri title:self.myProfile.name] : nil;
 
     
     NSString *btnTitle = [[FacebookManager sharedManager] isSessionActive] ? @"Logout" :  @"Login";
@@ -82,18 +80,23 @@
     
     [[FacebookManager sharedManager] logout];
     [self setNavigationItems];
+    [_mapView removeAnnotations: [_mapView.annotations filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"!(self isKindOfClass: %@)", [MKUserLocation class]]]];
     
 }
 
 - (void)handleFacebookSessionHandleNotification:(NSNotification *)notification {
 
     BOOL userLogin = [[notification object] boolValue];
+    
     [self setNavigationItems];
+    
     if (userLogin) {
+    
         [self fectchMyProfile];
         [self fetchFriends];
         [self fetchUserInbox];
-    }
+    
+    }//if
 }
 
 - (void)fetchFriends {

@@ -12,6 +12,7 @@
 @interface FriendsMapViewController : BaseViewViewController <MKMapViewDelegate> {
 
     __weak IBOutlet MKMapView *_mapView;
+   
 }
 
 @end
