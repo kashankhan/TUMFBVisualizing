@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewViewController.h"
+#import "BaseViewController.h"
 #import <MapKit/MapKit.h>
 
 @class Profile;
 
-@interface FriendDetailViewController : BaseViewViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface FriendDetailViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>{
 
     __weak IBOutlet MKMapView *_mapView;
     __weak IBOutlet UITableView *_tableView;

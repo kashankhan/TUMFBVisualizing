@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/***************** ENUM *****************/
+
+typedef enum {
+
+    ProfileTypeMine,
+    ProfileTypeFriend,
+    ProfileTypeFriendshipRequestFriend
+
+}ProfileType;
 
 /***************** NOTIFICATIONS *****************/
 

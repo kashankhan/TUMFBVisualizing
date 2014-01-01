@@ -27,7 +27,7 @@
 }
 - (NSArray*)getAllFriends {
     
-    return [self.coreDataUtility fetchRecordsForEntity:NSStringFromClass([Profile class]) sortBy:nil withPredicate:[NSPredicate predicateWithFormat:@"isOwnProfile = NO"]];
+    return [self.coreDataUtility fetchRecordsForEntity:NSStringFromClass([Profile class]) sortBy:nil withPredicate:[NSPredicate predicateWithFormat:@"profileType == %d", ProfileTypeFriend]];
     
 }
 
@@ -55,6 +55,12 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"recipients CONTAINS[c] %@ AND recipients CONTAINS[c] %@", profileId1, profileId2];
     return [self.coreDataUtility fetchRecordsForEntity:NSStringFromClass([Thread class]) sortBy:nil withPredicate:predicate];
 
+}
+
+- (FriendRequest *)getFriendRequest:(NSString *)uidFrom {
+
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uidFrom = %@", uidFrom];
+    return (FriendRequest*)[self getObjectWithEntity:NSStringFromClass([FriendRequest class])  withPredicate:predicate createNewIfNotFound:YES];
 }
 
 - (NSManagedObject*)getObjectWithEntity:(NSString*)entity withPredicate:(NSPredicate*)predicate createNewIfNotFound:(BOOL)create {

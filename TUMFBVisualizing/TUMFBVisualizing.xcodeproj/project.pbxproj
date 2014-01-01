@@ -12,6 +12,9 @@
 		C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B201833FC6000B957A7 /* PaserHandler.m */; };
 		C0164B241833FCE600B957A7 /* AppDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B231833FCE600B957A7 /* AppDAL.m */; };
 		C024A7EC1838048600DBC699 /* MapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = C024A7EB1838048600DBC699 /* MapAnnotationView.m */; };
+		C03A60D1186244300074BDCD /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = C03A60D0186244300074BDCD /* Profile.m */; };
+		C03A60D618624E3A0074BDCD /* FriendRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C03A60D518624E3A0074BDCD /* FriendRequestTableViewCell.m */; };
+		C03A60D91862501B0074BDCD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03A60D81862501B0074BDCD /* BaseTableViewController.m */; };
 		C06AB9B01825C0190032E2AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9AF1825C0190032E2AA /* Foundation.framework */; };
 		C06AB9B21825C0190032E2AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B11825C0190032E2AA /* CoreGraphics.framework */; };
 		C06AB9B41825C0190032E2AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B31825C0190032E2AA /* UIKit.framework */; };
@@ -28,14 +31,16 @@
 		C06AB9E21825C01A0032E2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C06AB9E01825C01A0032E2AA /* InfoPlist.strings */; };
 		C06AB9E41825C01A0032E2AA /* TUMFBVisualizingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */; };
 		C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */; };
+		C09E897918623998001FD8BE /* FriendshipRequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C09E897818623998001FD8BE /* FriendshipRequestsTableViewController.m */; };
 		C0B427B0185A6802008A4284 /* NavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B427AF185A6802008A4284 /* NavigationBarView.m */; };
 		C0B427B3185A70C0008A4284 /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B427B2185A70C0008A4284 /* FriendDetailViewController.m */; };
 		C0B427B6185A7118008A4284 /* MKMapView+Zoom.m in Sources */ = {isa = PBXBuildFile; fileRef = C0B427B5185A7118008A4284 /* MKMapView+Zoom.m */; };
 		C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D64AF218315EFE008D460F /* MapKit.framework */; };
 		C0D64AF71831652E008D460F /* FacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AF61831652E008D460F /* FacebookManager.m */; };
 		C0D64AFF18317848008D460F /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C0D64AFE18317848008D460F /* AppConstants.m */; };
+		C0DE5C7F187452150000EAB7 /* FriendRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C0DE5C7E187452150000EAB7 /* FriendRequest.m */; };
 		C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D2F18315C0B0087AF4B /* AppDelegate.m */; };
-		C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3718315C370087AF4B /* BaseViewViewController.m */; };
+		C0E55D3818315C370087AF4B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3718315C370087AF4B /* BaseViewController.m */; };
 		C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */; };
 		C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3F18315D730087AF4B /* MBProgressHUD.m */; };
 		C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E55D4118315EC30087AF4B /* CoreLocation.framework */; };
@@ -44,7 +49,6 @@
 		C0EEB6301837E7C400F5213F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62F1837E7C400F5213F /* LocationManager.m */; };
 		C0EEB6391837F73F00F5213F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EEB6381837F73F00F5213F /* QuartzCore.framework */; };
 		C0EFF43618381126007666B8 /* AnnotationCoordinateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */; };
-		C0F927E3185B927400C0CCB6 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F927E2185B927400C0CCB6 /* Profile.m */; };
 		C0F927E6185B927400C0CCB6 /* Thread.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F927E5185B927400C0CCB6 /* Thread.m */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +72,12 @@
 		C0164B231833FCE600B957A7 /* AppDAL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDAL.m; sourceTree = "<group>"; };
 		C024A7EA1838048600DBC699 /* MapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotationView.h; sourceTree = "<group>"; };
 		C024A7EB1838048600DBC699 /* MapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotationView.m; sourceTree = "<group>"; };
+		C03A60CF186244300074BDCD /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		C03A60D0186244300074BDCD /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		C03A60D418624E3A0074BDCD /* FriendRequestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequestTableViewCell.h; sourceTree = "<group>"; };
+		C03A60D518624E3A0074BDCD /* FriendRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestTableViewCell.m; sourceTree = "<group>"; };
+		C03A60D71862501B0074BDCD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		C03A60D81862501B0074BDCD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		C06AB9AC1825C0190032E2AA /* TUMFBVisualizing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMFBVisualizing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06AB9AF1825C0190032E2AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C06AB9B11825C0190032E2AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +97,8 @@
 		C06AB9E31825C01A0032E2AA /* TUMFBVisualizingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TUMFBVisualizingTests.m; sourceTree = "<group>"; };
 		C07BCBDD18351B5500946BAF /* MapViewAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotation.h; sourceTree = "<group>"; };
 		C07BCBDE18351B5500946BAF /* MapViewAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewAnnotation.m; sourceTree = "<group>"; };
+		C09E897718623998001FD8BE /* FriendshipRequestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendshipRequestsTableViewController.h; sourceTree = "<group>"; };
+		C09E897818623998001FD8BE /* FriendshipRequestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendshipRequestsTableViewController.m; sourceTree = "<group>"; };
 		C0B427AE185A6802008A4284 /* NavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBarView.h; sourceTree = "<group>"; };
 		C0B427AF185A6802008A4284 /* NavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBarView.m; sourceTree = "<group>"; };
 		C0B427B1185A70C0008A4284 /* FriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailViewController.h; sourceTree = "<group>"; };
@@ -98,10 +110,12 @@
 		C0D64AF61831652E008D460F /* FacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookManager.m; sourceTree = "<group>"; };
 		C0D64AFD18317848008D460F /* AppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		C0D64AFE18317848008D460F /* AppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConstants.m; sourceTree = "<group>"; };
+		C0DE5C7D187452150000EAB7 /* FriendRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendRequest.h; sourceTree = "<group>"; };
+		C0DE5C7E187452150000EAB7 /* FriendRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequest.m; sourceTree = "<group>"; };
 		C0E55D2E18315C0B0087AF4B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0E55D2F18315C0B0087AF4B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C0E55D3618315C370087AF4B /* BaseViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewViewController.h; sourceTree = "<group>"; };
-		C0E55D3718315C370087AF4B /* BaseViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewViewController.m; sourceTree = "<group>"; };
+		C0E55D3618315C370087AF4B /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		C0E55D3718315C370087AF4B /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		C0E55D3918315D290087AF4B /* FriendsMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsMapViewController.h; sourceTree = "<group>"; };
 		C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsMapViewController.m; sourceTree = "<group>"; };
 		C0E55D3E18315D730087AF4B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -116,8 +130,6 @@
 		C0EEB6381837F73F00F5213F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C0EFF43418381126007666B8 /* AnnotationCoordinateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationCoordinateUtility.h; sourceTree = "<group>"; };
 		C0EFF43518381126007666B8 /* AnnotationCoordinateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationCoordinateUtility.m; sourceTree = "<group>"; };
-		C0F927E1185B927400C0CCB6 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
-		C0F927E2185B927400C0CCB6 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		C0F927E4185B927400C0CCB6 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thread.h; sourceTree = "<group>"; };
 		C0F927E5185B927400C0CCB6 /* Thread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thread.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,10 +208,21 @@
 				C0EEB6291837D30500F5213F /* Location.m */,
 				C0F927E4185B927400C0CCB6 /* Thread.h */,
 				C0F927E5185B927400C0CCB6 /* Thread.m */,
-				C0F927E1185B927400C0CCB6 /* Profile.h */,
-				C0F927E2185B927400C0CCB6 /* Profile.m */,
+				C03A60CF186244300074BDCD /* Profile.h */,
+				C03A60D0186244300074BDCD /* Profile.m */,
+				C0DE5C7D187452150000EAB7 /* FriendRequest.h */,
+				C0DE5C7E187452150000EAB7 /* FriendRequest.m */,
 			);
 			path = Entites;
+			sourceTree = "<group>";
+		};
+		C03A60D318624E010074BDCD /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C03A60D418624E3A0074BDCD /* FriendRequestTableViewCell.h */,
+				C03A60D518624E3A0074BDCD /* FriendRequestTableViewCell.m */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		C06AB9A31825C0190032E2AA = {
@@ -324,6 +347,7 @@
 				C0E55D2D18315C0B0087AF4B /* AppDelegate */,
 				C0E55D3018315C0B0087AF4B /* Controllers */,
 				C07BCBDC18351B4000946BAF /* Views */,
+				C03A60D318624E010074BDCD /* TableViewCell */,
 				C0D64AF418316502008D460F /* Utilities */,
 				C0164B171833FC4600B957A7 /* BAL */,
 				C0164B191833FC4600B957A7 /* DAL */,
@@ -344,8 +368,10 @@
 		C0E55D3018315C0B0087AF4B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C0E55D3618315C370087AF4B /* BaseViewViewController.h */,
-				C0E55D3718315C370087AF4B /* BaseViewViewController.m */,
+				C0E55D3618315C370087AF4B /* BaseViewController.h */,
+				C0E55D3718315C370087AF4B /* BaseViewController.m */,
+				C03A60D71862501B0074BDCD /* BaseTableViewController.h */,
+				C03A60D81862501B0074BDCD /* BaseTableViewController.m */,
 				C0E55D3318315C0B0087AF4B /* FriendsMap */,
 			);
 			path = Controllers;
@@ -358,6 +384,8 @@
 				C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */,
 				C0B427B1185A70C0008A4284 /* FriendDetailViewController.h */,
 				C0B427B2185A70C0008A4284 /* FriendDetailViewController.m */,
+				C09E897718623998001FD8BE /* FriendshipRequestsTableViewController.h */,
+				C09E897818623998001FD8BE /* FriendshipRequestsTableViewController.m */,
 			);
 			path = FriendsMap;
 			sourceTree = "<group>";
@@ -476,19 +504,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09E897918623998001FD8BE /* FriendshipRequestsTableViewController.m in Sources */,
 				C0EEB6301837E7C400F5213F /* LocationManager.m in Sources */,
-				C0E55D3818315C370087AF4B /* BaseViewViewController.m in Sources */,
+				C0E55D3818315C370087AF4B /* BaseViewController.m in Sources */,
 				C0EEB62D1837E3BF00F5213F /* ImageView.m in Sources */,
 				C0D64AF71831652E008D460F /* FacebookManager.m in Sources */,
 				C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */,
 				C0EFF43618381126007666B8 /* AnnotationCoordinateUtility.m in Sources */,
 				C06AB9BE1825C01A0032E2AA /* main.m in Sources */,
+				C03A60D91862501B0074BDCD /* BaseTableViewController.m in Sources */,
+				C03A60D618624E3A0074BDCD /* FriendRequestTableViewCell.m in Sources */,
 				C06AB9C81825C01A0032E2AA /* TUMFBVisualizing.xcdatamodeld in Sources */,
+				C0DE5C7F187452150000EAB7 /* FriendRequest.m in Sources */,
 				C0B427B3185A70C0008A4284 /* FriendDetailViewController.m in Sources */,
 				C0B427B6185A7118008A4284 /* MKMapView+Zoom.m in Sources */,
 				C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */,
 				C0164B1E1833FC4600B957A7 /* CoreDataUtility.m in Sources */,
-				C0F927E3185B927400C0CCB6 /* Profile.m in Sources */,
 				C0EEB62A1837D30500F5213F /* Location.m in Sources */,
 				C024A7EC1838048600DBC699 /* MapAnnotationView.m in Sources */,
 				C0D64AFF18317848008D460F /* AppConstants.m in Sources */,
@@ -496,6 +527,7 @@
 				C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */,
 				C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */,
 				C0F927E6185B927400C0CCB6 /* Thread.m in Sources */,
+				C03A60D1186244300074BDCD /* Profile.m in Sources */,
 				C0164B241833FCE600B957A7 /* AppDAL.m in Sources */,
 				C0B427B0185A6802008A4284 /* NavigationBarView.m in Sources */,
 			);

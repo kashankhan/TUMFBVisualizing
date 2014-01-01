@@ -25,7 +25,6 @@ typedef void (^FacebookManagerRequestHandler)(FBRequestConnection *connection,
 - (void)fetchMyProfile:(FacebookManagerRequestHandler)handler;
 - (void)fetchFreindsLocationWithCompletionHandler:(FacebookManagerRequestHandler)handler;
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler;
-- (void)fetchUserUnRespondedFriendRequests:(FacebookManagerRequestHandler)handler  ;
-
-
+- (void)fetchUserUnRespondedFriendRequests:(FacebookManagerRequestHandler)handler;
+- (void)fetchUserFriendProfile:(NSString *)uid handler:(FacebookManagerRequestHandler)handler;
 @end

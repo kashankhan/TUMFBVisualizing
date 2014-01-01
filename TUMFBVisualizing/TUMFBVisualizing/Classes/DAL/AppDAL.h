@@ -10,6 +10,7 @@
 #import "Profile.h"
 #import "Location.h"
 #import "Thread.h"
+#import "FriendRequest.h"
 
 @class CoreDataUtility;
 
@@ -22,6 +23,7 @@
 - (Location *)getLocation:(NSString *)locationId;
 - (Thread *)getThread:(NSString *)threadId;
 - (NSArray *)getAllThreadsBetweenProfiles:(NSString *)profileId1 person2:(NSString *)profileId2;
+- (FriendRequest *)getFriendRequest:(NSString *)uidFrom;
 
 - (void)saveContext;
 

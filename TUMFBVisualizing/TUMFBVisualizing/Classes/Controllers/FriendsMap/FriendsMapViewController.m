@@ -57,14 +57,26 @@
 
 - (void)setNavigationItems {
 
+
+    if (self.myProfile) {
+     
+        self.navigationItem.titleView = [NavigationBarView navigationBarView:self.myProfile.picUri title:self.myProfile.name];
+     
+        SEL selector =  NSSelectorFromString(@"openActionSheet:");
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:selector];
+        [self.navigationItem setRightBarButtonItem:barItem];
+    }
+    else {
     
-    self.navigationItem.titleView = (self.myProfile) ? [NavigationBarView navigationBarView:self.myProfile.picUri title:self.myProfile.name] : nil;
+        self.navigationItem.titleView = nil;
+        NSString *btnTitle = @"Login";
+        SEL selector =  NSSelectorFromString(@"performLogin:");
+        UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:btnTitle style:UIBarButtonItemStylePlain target:self action:selector];
+        [self.navigationItem setRightBarButtonItem:barItem];
+    }
 
     
-    NSString *btnTitle = [[FacebookManager sharedManager] isSessionActive] ? @"Logout" :  @"Login";
-    SEL selector = ([[FacebookManager sharedManager] isSessionActive]) ? NSSelectorFromString(@"performLogout:") : NSSelectorFromString(@"performLogin:");
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:btnTitle style:UIBarButtonItemStylePlain target:self action:selector];
-    [self.navigationItem setRightBarButtonItem:barItem];
+
 }
 
 - (void)subscribeNotificaitons {
@@ -188,8 +200,37 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    [[segue destinationViewController] setFriendProfile:self.lastSelectedfriendProfile];
-    [[segue destinationViewController] setMyProfile:self.myProfile];
+    if ([[segue identifier] isEqualToString:@"SeguePushFriendDetailViewController"]) {
+        
+        [[segue destinationViewController] setFriendProfile:self.lastSelectedfriendProfile];
+        [[segue destinationViewController] setMyProfile:self.myProfile];
+    }//if
+
+}
+
+#pragma mark -Action Sheet
+- (void)openActionSheet:(id)sender {
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Friendship Requets",  @"Logout", nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    switch (buttonIndex) {
+        case 0:
+            [self performSegueWithIdentifier:@"SegueFriendshipRequestsTableViewController" sender:self];
+            break;
+        case 1:
+            [self performLogout:actionSheet];
+            break;
+            
+        default:
+            break;
+    }
+    if (buttonIndex == 0) {
+        
+    }
 }
 
 @end

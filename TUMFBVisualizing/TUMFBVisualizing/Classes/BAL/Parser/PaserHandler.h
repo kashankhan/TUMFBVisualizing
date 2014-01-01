@@ -13,5 +13,6 @@
 - (id)parseFriends:(id)object;
 - (id)parseMyProfile:(id)object;
 - (id)parseInboxInfo:(id)object;
-
+- (id)parseFriendshipRequestsInfo:(id)object;
+- (id)parseFriendshipRequestFriendInfo:(id)object;
 @end

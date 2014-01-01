@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Kashan Khan. All rights reserved.
 //
 
-#import "BaseViewViewController.h"
+#import "BaseViewController.h"
 #import "MBProgressHUD.h"
 
-@interface BaseViewViewController ()
+@interface BaseViewController ()
 
 @property (nonatomic, strong) MBProgressHUD *progressHud;
 
 @end
 
-@implementation BaseViewViewController
+@implementation BaseViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

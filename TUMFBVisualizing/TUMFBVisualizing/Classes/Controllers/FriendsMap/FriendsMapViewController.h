@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Kashan Khan. All rights reserved.
 //
 
-#import "BaseViewViewController.h"
+#import "BaseViewController.h"
 #import <MapKit/MapKit.h>
 
-@interface FriendsMapViewController : BaseViewViewController <MKMapViewDelegate> {
+@interface FriendsMapViewController : BaseViewController <MKMapViewDelegate, UIActionSheetDelegate> {
 
     __weak IBOutlet MKMapView *_mapView;
    

@@ -11,6 +11,7 @@
 @interface FacebookManager ()
 
 @property (nonatomic, strong) FBSession *session;
+
 @end
 
 @implementation FacebookManager
@@ -53,6 +54,8 @@ static FacebookManager *_sharedInstance = nil;
     [self.session openWithCompletionHandler:^(FBSession *session,
                                                      FBSessionState status,
                                                      NSError *error) {
+        
+        NSLog(@"session : %@",session);
     }];
 
 }
@@ -132,7 +135,9 @@ static FacebookManager *_sharedInstance = nil;
                               }
                               
                               
-                              [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:(error) ? NO : YES]];
+                              
+                              [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:YES]];
+                             // [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:(error) ? NO : YES]];
                           }];
 }
 
@@ -147,6 +152,7 @@ static FacebookManager *_sharedInstance = nil;
         if (call.accessTokenData) {
             if ([FBSession activeSession].isOpen) {
                 NSLog(@"INFO: Ignoring app link because current session is open.");
+                [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:YES]];
             }//if
             else {
                 [_sharedInstance handleAppLink:call.accessTokenData];
@@ -189,9 +195,7 @@ static FacebookManager *_sharedInstance = nil;
 
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler {
     
-      NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND (originator IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR originator=me()) AND updated_time < now() ORDER BY message_count DESC";
-//
-//          NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND updated_time < now() ORDER BY message_count DESC";
+    NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND (originator IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR originator=me()) AND updated_time < now() ORDER BY message_count DESC";
     
     [self sendFqlRequest:query withCompletionHandler:handler];
     
@@ -200,8 +204,17 @@ static FacebookManager *_sharedInstance = nil;
 - (void)fetchUserUnRespondedFriendRequests:(FacebookManagerRequestHandler)handler  {
    
     NSString *query =  @"SELECT time, message, uid_from, uid_to FROM friend_request WHERE uid_to = me()";
+    
     [self sendFqlRequest:query withCompletionHandler:handler];
 }
+
+- (void)fetchUserFriendProfile:(NSString *)uid handler:(FacebookManagerRequestHandler)handler {
+
+    NSString *query =  [NSString stringWithFormat:@"SELECT uid, name, pic_square FROM user WHERE uid = %@", uid];
+    
+    [self sendFqlRequest:query withCompletionHandler:handler];
+}
+
 - (void)sendFqlRequest:(NSString *)query withCompletionHandler:(FacebookManagerRequestHandler)handler {
     
 

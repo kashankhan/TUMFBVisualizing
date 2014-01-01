@@ -27,6 +27,7 @@
         [friend setUid:uid];
         [friend setPicUri:picUri];
         [friend setName:name];
+        [friend setProfileType:[NSNumber numberWithInt:ProfileTypeFriend]];
         
         NSDictionary *locationInfo = [friendInfo valueForKey:@"current_location"];
         
@@ -79,7 +80,7 @@
         [profile setName:name];
         [profile setUid:uid];
         [profile setPicUri:picUri];
-        [profile setIsOwnProfile:[NSNumber numberWithBool:YES]];
+        [profile setProfileType:[NSNumber numberWithInt:ProfileTypeMine]];
     }
     
     [appDal saveContext];
@@ -94,7 +95,7 @@
     
     for (NSDictionary *threadInfo in [object valueForKey:@"data"]) {
         NSString *msgCount = [[threadInfo valueForKey:@"message_count"] stringValue];
-        NSString *threadId = [[threadInfo valueForKey:@"message_count"] stringValue];
+        NSString *threadId = [[threadInfo valueForKey:@"thread_id"] stringValue];
         NSArray *recipients = [threadInfo valueForKey:@"recipients"];
         
         thread = [appDal getThread:threadId];
@@ -114,5 +115,62 @@
     
     [appDal saveContext];
     return threads;
+}
+
+- (id)parseFriendshipRequestsInfo:(id)object {
+
+    AppDAL *appDal = [[AppDAL alloc] init];
+    NSMutableArray *friendRequests = [NSMutableArray array];
+    for (NSDictionary *requestInfo in [object valueForKey:@"data"]) {
+
+        NSString *message = ( [[requestInfo valueForKey:@"message"] isKindOfClass:[NSString class]]) ?[requestInfo valueForKey:@"message"] : @"";
+        NSDate *time = [NSDate dateWithTimeIntervalSince1970:[[requestInfo valueForKey:@"time"] doubleValue] / 1000];
+        NSString *uidFrom = [requestInfo valueForKey:@"uid_from"];
+        NSString *uidTo = [requestInfo valueForKey:@"uid_to"];
+
+        FriendRequest *friendRequest = [appDal getFriendRequest:uidFrom];
+        
+        [friendRequest setUidFrom:uidFrom];
+        [friendRequest setUidTo:uidTo];
+        [friendRequest setTime:time];
+        [friendRequest setMessage:message];
+        
+        [friendRequests addObject:friendRequest];
+        
+    }//for
+    
+    [appDal saveContext];
+    return friendRequests;
+
+}
+
+- (id)parseFriendshipRequestFriendInfo:(id)object {
+    AppDAL *appDal = [[AppDAL alloc] init];
+    
+
+    FriendRequest *friendRequest = nil;
+    for (NSDictionary *requestInfo in [object valueForKey:@"data"]) {
+        NSString *name = [requestInfo valueForKey:@"name"];
+        NSString *uid = [requestInfo valueForKey:@"uid"];
+        NSString *picUri = [requestInfo valueForKey:@"pic_square"];
+     
+        Profile *profile = [appDal getProfile:uid];
+        [profile setUid:uid];
+        [profile setPicUri:picUri];
+        [profile setName:name];
+        [profile setProfileType:[NSNumber numberWithInt:ProfileTypeFriendshipRequestFriend]];
+        
+        friendRequest = [appDal getFriendRequest:uid];
+        
+        [friendRequest setProfileInfo:profile];
+        [profile setFriendRequestInfo:friendRequest];
+
+        
+    }//for
+    
+    [appDal saveContext];
+    
+    return friendRequest;
+
 }
 @end
