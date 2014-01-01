@@ -95,7 +95,7 @@
     
     for (NSDictionary *threadInfo in [object valueForKey:@"data"]) {
         NSString *msgCount = [[threadInfo valueForKey:@"message_count"] stringValue];
-        NSString *threadId = [[threadInfo valueForKey:@"thread_id"] stringValue];
+        NSString *threadId = [threadInfo valueForKey:@"thread_id"];
         NSArray *recipients = [threadInfo valueForKey:@"recipients"];
         
         thread = [appDal getThread:threadId];

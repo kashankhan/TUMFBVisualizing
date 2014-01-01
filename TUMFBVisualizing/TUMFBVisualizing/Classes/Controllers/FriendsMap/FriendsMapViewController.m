@@ -83,6 +83,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleFacebookSessionHandleNotification:) name:UIFacebookLUserSessionNotification object:nil];
 }
+
 - (void)performLogin:(id)sender {
 
    [[FacebookManager sharedManager] perfromLogin];

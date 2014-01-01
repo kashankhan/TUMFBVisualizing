@@ -195,7 +195,7 @@ static FacebookManager *_sharedInstance = nil;
 
 - (void)fetchUserInboxWithCompletionHandler:(FacebookManagerRequestHandler)handler {
     
-    NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND (originator IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR originator=me()) AND updated_time < now() ORDER BY message_count DESC";
+   NSString *query = @"SELECT thread_id, message_count, recipients FROM thread WHERE folder_id=0 AND (originator IN (SELECT uid2 FROM friend WHERE uid1 = me()) OR originator=me()) AND updated_time < now() ORDER BY message_count DESC";
     
     [self sendFqlRequest:query withCompletionHandler:handler];
     
