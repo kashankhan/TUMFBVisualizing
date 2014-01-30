@@ -11,6 +11,7 @@
 #import "FriendRequest.h"
 #import "Profile.h"
 #import "FriendRequestTableViewCell.h"
+#import "ProfileViewController.h"
 
 @interface FriendshipRequestsTableViewController ()
 
@@ -46,6 +47,8 @@
 }
 
 - (void)setUpSubViews {
+    
+    [self setTitle:@"Friend Request"];
     
     self.items = [[NSMutableArray alloc] init];
     [self fetchUserUnRespondedFriends];
@@ -104,6 +107,21 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    FriendRequest *friendRequest = [self.items objectAtIndex:indexPath.row];
+    Profile *profile = friendRequest.profileInfo;
+    [self openFacebookProfile:profile];
+}
+
+- (void)openFacebookProfile:(Profile *)profile {
+
+    ProfileViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    [viewController setProfileId:profile.uid];
+    [viewController setName:profile.name];
+    [self.navigationController pushViewController:viewController animated:YES];
+
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

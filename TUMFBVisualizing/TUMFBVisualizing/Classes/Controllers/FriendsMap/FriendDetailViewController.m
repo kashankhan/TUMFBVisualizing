@@ -14,6 +14,7 @@
 #import "MapAnnotationView.h"
 #import "MKMapView+Zoom.h"
 #import "AppDAL.h"
+#import "ProfileViewController.h"
 
 @interface FriendDetailViewController ()
 
@@ -49,7 +50,7 @@ static NSString *kCellSubTitleKey = @"CellSubTitle";
 - (void)setUpSubViews {
     
     [_mapView setUserInteractionEnabled:YES];
-    [_mapView setUserTrackingMode:MKUserTrackingModeFollow];
+    //[_mapView setUserTrackingMode:MKUserTrackingModeFollow];
     [self markFriendOnMap];
     [self setNavigationItems];
     [self loadThreadInfo];
@@ -58,6 +59,9 @@ static NSString *kCellSubTitleKey = @"CellSubTitle";
 - (void)setNavigationItems {
     
     self.navigationItem.titleView = [NavigationBarView navigationBarView:self.friendProfile.picUri title:self.friendProfile.name];
+    UITapGestureRecognizer *gestures = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFacebookProfile)];
+    [gestures setNumberOfTapsRequired:1];
+    [self.navigationItem.titleView addGestureRecognizer:gestures];
 }
 
 - (void)markFriendOnMap {
@@ -117,6 +121,15 @@ static NSString *kCellSubTitleKey = @"CellSubTitle";
     [_items addObject:msgCountInfo];
     
     [_tableView reloadData];
+    
+}
+
+
+- (void)openFacebookProfile {
+    
+    ProfileViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    [viewController setProfileId:self.friendProfile.uid];
+    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 #pragma mark -UITableView Datasource Methods

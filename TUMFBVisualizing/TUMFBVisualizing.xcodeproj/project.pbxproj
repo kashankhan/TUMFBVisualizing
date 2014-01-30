@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C001ABBB182680380027434C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C001ABBA182680380027434C /* FacebookSDK.framework */; };
 		C0164B1E1833FC4600B957A7 /* CoreDataUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B1C1833FC4600B957A7 /* CoreDataUtility.m */; };
 		C0164B211833FC6000B957A7 /* PaserHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B201833FC6000B957A7 /* PaserHandler.m */; };
 		C0164B241833FCE600B957A7 /* AppDAL.m in Sources */ = {isa = PBXBuildFile; fileRef = C0164B231833FCE600B957A7 /* AppDAL.m */; };
@@ -15,6 +14,7 @@
 		C03A60D1186244300074BDCD /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = C03A60D0186244300074BDCD /* Profile.m */; };
 		C03A60D618624E3A0074BDCD /* FriendRequestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C03A60D518624E3A0074BDCD /* FriendRequestTableViewCell.m */; };
 		C03A60D91862501B0074BDCD /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C03A60D81862501B0074BDCD /* BaseTableViewController.m */; };
+		C0563B191899A8BA005E9A5C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0563B181899A8BA005E9A5C /* ProfileViewController.m */; };
 		C06AB9B01825C0190032E2AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9AF1825C0190032E2AA /* Foundation.framework */; };
 		C06AB9B21825C0190032E2AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B11825C0190032E2AA /* CoreGraphics.framework */; };
 		C06AB9B41825C0190032E2AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06AB9B31825C0190032E2AA /* UIKit.framework */; };
@@ -44,6 +44,7 @@
 		C0E55D3B18315D290087AF4B /* FriendsMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3A18315D290087AF4B /* FriendsMapViewController.m */; };
 		C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C0E55D3F18315D730087AF4B /* MBProgressHUD.m */; };
 		C0E55D4218315EC30087AF4B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E55D4118315EC30087AF4B /* CoreLocation.framework */; };
+		C0E969691899F00700742185 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0E969681899F00700742185 /* FacebookSDK.framework */; };
 		C0EEB62A1837D30500F5213F /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB6291837D30500F5213F /* Location.m */; };
 		C0EEB62D1837E3BF00F5213F /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62C1837E3BF00F5213F /* ImageView.m */; };
 		C0EEB6301837E7C400F5213F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C0EEB62F1837E7C400F5213F /* LocationManager.m */; };
@@ -63,7 +64,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C001ABBA182680380027434C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		C0164B1B1833FC4600B957A7 /* CoreDataUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataUtility.h; sourceTree = "<group>"; };
 		C0164B1C1833FC4600B957A7 /* CoreDataUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataUtility.m; sourceTree = "<group>"; };
 		C0164B1F1833FC6000B957A7 /* PaserHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaserHandler.h; sourceTree = "<group>"; };
@@ -78,6 +78,8 @@
 		C03A60D518624E3A0074BDCD /* FriendRequestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendRequestTableViewCell.m; sourceTree = "<group>"; };
 		C03A60D71862501B0074BDCD /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		C03A60D81862501B0074BDCD /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		C0563B171899A8BA005E9A5C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		C0563B181899A8BA005E9A5C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		C06AB9AC1825C0190032E2AA /* TUMFBVisualizing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMFBVisualizing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06AB9AF1825C0190032E2AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C06AB9B11825C0190032E2AA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +123,7 @@
 		C0E55D3E18315D730087AF4B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		C0E55D3F18315D730087AF4B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		C0E55D4118315EC30087AF4B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C0E969681899F00700742185 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		C0EEB6281837D30500F5213F /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		C0EEB6291837D30500F5213F /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		C0EEB62B1837E3BF00F5213F /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
@@ -143,8 +146,8 @@
 				C0EEB6391837F73F00F5213F /* QuartzCore.framework in Frameworks */,
 				C0D64AF318315EFE008D460F /* MapKit.framework in Frameworks */,
 				C06AB9B21825C0190032E2AA /* CoreGraphics.framework in Frameworks */,
-				C001ABBB182680380027434C /* FacebookSDK.framework in Frameworks */,
 				C06AB9B61825C0190032E2AA /* CoreData.framework in Frameworks */,
+				C0E969691899F00700742185 /* FacebookSDK.framework in Frameworks */,
 				C06AB9B41825C0190032E2AA /* UIKit.framework in Frameworks */,
 				C06AB9B01825C0190032E2AA /* Foundation.framework in Frameworks */,
 			);
@@ -247,10 +250,10 @@
 		C06AB9AE1825C0190032E2AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0E969681899F00700742185 /* FacebookSDK.framework */,
 				C0EEB6381837F73F00F5213F /* QuartzCore.framework */,
 				C0D64AF218315EFE008D460F /* MapKit.framework */,
 				C0E55D4118315EC30087AF4B /* CoreLocation.framework */,
-				C001ABBA182680380027434C /* FacebookSDK.framework */,
 				C06AB9AF1825C0190032E2AA /* Foundation.framework */,
 				C06AB9B11825C0190032E2AA /* CoreGraphics.framework */,
 				C06AB9B31825C0190032E2AA /* UIKit.framework */,
@@ -373,6 +376,8 @@
 				C03A60D71862501B0074BDCD /* BaseTableViewController.h */,
 				C03A60D81862501B0074BDCD /* BaseTableViewController.m */,
 				C0E55D3318315C0B0087AF4B /* FriendsMap */,
+				C0563B171899A8BA005E9A5C /* ProfileViewController.h */,
+				C0563B181899A8BA005E9A5C /* ProfileViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				C0EEB62A1837D30500F5213F /* Location.m in Sources */,
 				C024A7EC1838048600DBC699 /* MapAnnotationView.m in Sources */,
 				C0D64AFF18317848008D460F /* AppConstants.m in Sources */,
+				C0563B191899A8BA005E9A5C /* ProfileViewController.m in Sources */,
 				C0E55D3418315C0B0087AF4B /* AppDelegate.m in Sources */,
 				C0E55D4018315D730087AF4B /* MBProgressHUD.m in Sources */,
 				C07BCBDF18351B5500946BAF /* MapViewAnnotation.m in Sources */,

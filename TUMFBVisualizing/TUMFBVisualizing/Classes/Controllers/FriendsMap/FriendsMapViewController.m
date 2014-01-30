@@ -16,6 +16,7 @@
 #import "NavigationBarView.h"
 #import "MKMapView+Zoom.h"
 #import "FriendDetailViewController.h"
+#import "ProfileViewController.h"
 
 @interface FriendsMapViewController ()
 
@@ -61,6 +62,10 @@
     if (self.myProfile) {
      
         self.navigationItem.titleView = [NavigationBarView navigationBarView:self.myProfile.picUri title:self.myProfile.name];
+        
+        UITapGestureRecognizer *gestures = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openFacebookProfile)];
+        [gestures setNumberOfTapsRequired:1];
+        [self.navigationItem.titleView addGestureRecognizer:gestures];
      
         SEL selector =  NSSelectorFromString(@"openActionSheet:");
         UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:selector];
@@ -86,7 +91,7 @@
 
 - (void)performLogin:(id)sender {
 
-   [[FacebookManager sharedManager] perfromLogin];
+   [[FacebookManager sharedManager] perfromLogin:self.view];
 }
 
 - (void)performLogout:(id)sender {
@@ -197,6 +202,15 @@
 
     self.lastSelectedfriendProfile = profile;
     [self performSegueWithIdentifier:@"SeguePushFriendDetailViewController" sender:self];
+}
+
+- (void)openFacebookProfile {
+    
+    ProfileViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    [viewController setProfileId:self.myProfile.uid];
+    [viewController setName:self.myProfile.name];
+    [self.navigationController pushViewController:viewController animated:YES];
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

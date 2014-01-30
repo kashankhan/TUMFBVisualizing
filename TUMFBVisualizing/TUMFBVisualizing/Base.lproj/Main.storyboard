@@ -115,6 +115,37 @@
             </objects>
             <point key="canvasLocation" x="455" y="406"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="2yh-fc-GSt">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E0r-VN-TD5" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o3x-BD-sqZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="g3e-4Q-A4Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9bK-vJ-1Uw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xnk-hj-ZCk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="E0r-VN-TD5" id="Paf-mT-9Ec"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="xnk-hj-ZCk" id="slA-Lb-HSa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="loH-2G-kGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="93"/>
+        </scene>
         <!--Friend Detail View Controller-->
         <scene sceneID="jOU-0F-rne">
             <objects>
