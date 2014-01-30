@@ -20,6 +20,7 @@ typedef void (^FacebookManagerRequestHandler)(FBRequestConnection *connection,
 - (void)closeActiveSession;
 - (void)perfromLogin;
 - (void)logout;
+- (void)activateSession;
 - (void)handleAppLink:(FBAccessTokenData *)appLinkToken;
 - (BOOL)openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
 - (void)fetchMyProfile:(FacebookManagerRequestHandler)handler;

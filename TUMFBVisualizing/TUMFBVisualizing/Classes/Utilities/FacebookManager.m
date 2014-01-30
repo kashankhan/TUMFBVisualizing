@@ -23,6 +23,7 @@ static FacebookManager *_sharedInstance = nil;
     static dispatch_once_t oncePredicate;
 
     dispatch_once(&oncePredicate, ^{
+        
         _sharedInstance = [[FacebookManager alloc] init];
         [_sharedInstance refreshFacebookSession];
     });
@@ -41,32 +42,59 @@ static FacebookManager *_sharedInstance = nil;
     [FBSession.activeSession close];
 }
 
-- (void)logout {
+- (void)activateSession {
+    [FBAppEvents activateApp];
     
-    [self closeActiveSession];
+    /*
+     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+     */
+    
+    // FBSample logic
+    // We need to properly handle activation of the application with regards to SSO
+    //  (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
+    [FBAppCall handleDidBecomeActiveWithSession:self.session];
+}
+- (void)logout {
+
     [[FBSession activeSession] closeAndClearTokenInformation];
+    [self closeActiveSession];
 }
 
 - (void)perfromLogin {
     
-    self.session = [self getFacebookNewSession];
+    // if we don't have a cached token, a call to open here would cause UX for login to
+    // occur; we don't want that to happen unless the user clicks the login button, and so
+    // we check here to make sure we have a token before calling open
+    if (self.session.state != FBSessionStateCreatedTokenLoaded) {
+        // even though we had a cached token, we need to login to make the session usable
+        [self.session openWithCompletionHandler:^(FBSession *session,
+                                                         FBSessionState status,
+                                                         NSError *error) {
+            
+            [FBSession setActiveSession:session];
+            // we recurse here, in order to update buttons and labels
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:YES]];
+        }];
+    }
+    else {
     
-    [self.session openWithCompletionHandler:^(FBSession *session,
-                                                     FBSessionState status,
-                                                     NSError *error) {
-        
-        NSLog(@"session : %@",session);
-    }];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:YES]];
+    }
 
 }
 
 - (void)refreshFacebookSession {
 
-    if (self.session.state == FBSessionStateCreatedTokenLoaded) {
+    if (!self.session.isOpen) {
+        // create a fresh session object
+        self.session = [self getFacebookNewSession];
+    }
+    if (self.session.state != FBSessionStateCreated) {
         // even though we had a cached token, we need to login to make the session usable
         [self.session openWithCompletionHandler:^(FBSession *session,
                                                          FBSessionState status,
                                                          NSError *error) {
+                 [FBSession setActiveSession:session];
             // we recurse here, in order to update buttons and labels
             [[NSNotificationCenter defaultCenter] postNotificationName:UIFacebookLUserSessionNotification object:[NSNumber numberWithBool:(error) ? NO : YES]];
         }];
@@ -75,17 +103,13 @@ static FacebookManager *_sharedInstance = nil;
 
 - (FBSession *)getFacebookNewSession {
 
-   return [[FBSession alloc] initWithAppID:[NSString stringWithFormat:@"%@",[[[NSBundle mainBundle] infoDictionary] valueForKey:@"FacebookAppID"]]
-                         permissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]
-                     defaultAudience:FBSessionDefaultAudienceNone
-                     urlSchemeSuffix:nil
-                  tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+    return [[FBSession alloc] initWithPermissions:@[@"basic_info",@"user_likes", @"user_friends", @"friends_hometown", @"friends_location", @"read_mailbox", @"read_requests"]];
 }
 // Helper method to wrap logic for handling app links.
 - (void)handleAppLink:(FBAccessTokenData *)appLinkToken {
     
     // Initialize a new blank session instance...
-    self.session = [self getFacebookNewSession];
+   // self.session = [self getFacebookNewSession];
 
     [FBSession setActiveSession:self.session];
     // ... and open it from the App Link's Token.
@@ -143,6 +167,10 @@ static FacebookManager *_sharedInstance = nil;
 
 - (BOOL)openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
 
+    
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:self.session];
     // Facebook SDK * login flow *
     // Attempt to handle URLs to complete any auth (e.g., SSO) flow.
     return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication fallbackHandler:^(FBAppCall *call) {

@@ -19,7 +19,7 @@
     
     for (NSDictionary *friendInfo in [object valueForKey:@"data"]) {
         
-        NSString *uid = [friendInfo valueForKey:@"uid"];
+        NSString *uid = [[friendInfo valueForKey:@"uid"] stringValue];
         NSString *picUri = [friendInfo valueForKey:@"pic_square"];
         NSString *name = [friendInfo valueForKey:@"name"];
 
@@ -151,7 +151,7 @@
     FriendRequest *friendRequest = nil;
     for (NSDictionary *requestInfo in [object valueForKey:@"data"]) {
         NSString *name = [requestInfo valueForKey:@"name"];
-        NSString *uid = [requestInfo valueForKey:@"uid"];
+        NSString *uid = [[requestInfo valueForKey:@"uid"] stringValue];
         NSString *picUri = [requestInfo valueForKey:@"pic_square"];
      
         Profile *profile = [appDal getProfile:uid];

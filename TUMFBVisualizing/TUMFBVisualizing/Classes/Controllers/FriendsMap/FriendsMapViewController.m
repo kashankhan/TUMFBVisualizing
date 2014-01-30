@@ -91,7 +91,7 @@
 
 - (void)performLogin:(id)sender {
 
-   [[FacebookManager sharedManager] perfromLogin:self.view];
+   [[FacebookManager sharedManager] perfromLogin];
 }
 
 - (void)performLogout:(id)sender {
