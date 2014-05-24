@@ -33,7 +33,7 @@
         
         if (locationInfo && ![locationInfo isEqual:[NSNull null]]) {
             
-            NSString *locationId = [locationInfo valueForKey:@"id"];
+            NSString *locationId = [[locationInfo valueForKey:@"id"] stringValue];
             NSString *city = [locationInfo valueForKey:@"city"];
             NSString *country = [locationInfo valueForKey:@"country"];
             double latitude = [[locationInfo valueForKey:@"latitude"] doubleValue];
